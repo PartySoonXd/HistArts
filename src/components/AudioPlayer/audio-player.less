@@ -1,0 +1,125 @@
+.audio-player {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    &-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        cursor: pointer;
+        &-btns {
+            display: flex;
+            align-items: center;
+        }
+    }
+    &-change-file-btn {
+        height: 24px;
+        width: 24px;
+    }
+    &-play-btn {
+        width: 44px;
+        height: 44px;
+        margin-left: 15px;
+        &.pause {
+            padding: 6px 0;
+            box-sizing: border-box;
+        }
+    }
+    &-change-volume {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        &__icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px ;
+        }
+        &__input {
+            appearance: none;
+            outline: none;
+            width: 70px;
+            height: 4px;
+            border-radius: 4px;
+            &::-webkit-slider-thumb {
+                appearance: none;
+                width: 12px;
+                height: 12px;
+                border: 2px solid @white;
+                border-radius: 50%;
+                cursor: pointer;
+                background: @white;
+            }
+        }
+    }
+    &-timeline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+        &__input {
+            appearance: none;
+            outline: none;
+            width: 70%;
+            margin: 0 10px;
+            height: 4px;
+            background: @white;
+            border-radius: 4px;
+            &::-webkit-slider-thumb {
+                appearance: none;
+                width: 12px;
+                height: 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                background: @white;
+            }
+        }
+        &__time {
+            width: 35px;
+            color: @white;
+            font-size: 14px;
+        }
+    }
+    &.item-player {
+        background: @black;
+        max-width: 600px;
+        margin: auto 0 0 0;
+        padding: 15px 20px;
+        &.history {
+            padding: 10px 15px;
+        }
+    }
+    &.modal-player {
+        background: @black;
+        max-width: 300px;
+        padding: 10px 25px;
+    }
+
+}
+
+.m-media({
+    .audio-player {
+        &.item-player {
+            max-width: 400px;
+            padding: 10px;
+        }
+    }
+});
+
+.xs-media({
+    .audio-player {
+        &-timeline {
+            margin-top: 5px;
+        }
+        &.item-player {
+            &.history {
+                max-width: 100%;
+                padding: 5px 10px;
+            }
+        }
+        &.modal-player {
+            padding: 10px 20px;
+        }
+    }
+});

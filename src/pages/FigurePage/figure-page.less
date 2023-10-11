@@ -1,0 +1,276 @@
+.figure-intro {
+    margin-top: 50px;
+    height: calc(100vh - 153px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-bg {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin: 0;
+        opacity: 1;
+        z-index: -1;
+        &.mobile {
+            display: none;
+        }
+    }
+    &-header {
+        display: flex;
+        align-items: center;
+        padding-top: 50px;
+        .left-line, .right-line {
+            flex-grow: 1;
+            height: 2px;
+            background: @white;
+            display: block;
+            position: relative;
+            animation: scale-x .5s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+            box-shadow: 7px 0px 45px 2px @black;
+        }
+        .left-line {
+            transform-origin: left;
+        }
+        .right-line {
+            transform-origin: right;
+        }
+    }
+    &-title {
+        color: @white;
+        .h1();
+        line-height: 64px;
+        letter-spacing: 0.05em;
+        text-align: center;
+        position: relative;
+        margin: 0 20px;
+        &::after {
+            content: "";
+            background: @black;
+            position: absolute;
+            width: calc(100% + 30px);
+            height: calc(100% + 15px);
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: .3;
+            border-radius: 15%;
+            filter: blur(35px);
+        }
+    }
+    &-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 120px;
+        &__text {
+            align-self: baseline;
+            font-family: 'Great Vibes';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 50px;
+            letter-spacing: 0.05em;
+            color: @white;            
+
+            margin-bottom: 15px;
+            &::after {
+                content: "";
+                background: @black;
+                position: absolute;
+                width: calc(100% + 30px);
+                height: calc(100% + 15px);
+                display: block;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1;
+                opacity: .3;
+                border-radius: 15%;
+                filter: blur(35px);
+            }
+        }
+    }
+}
+
+.figure-about {
+    padding-top: 50px;
+    background: @white;
+    &-title {
+        color: @black;
+        .h2();
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    &-content {
+        margin: 0 -15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__img {
+            width: 45%;
+            object-fit: contain;
+            flex: 1 1 380px;
+            margin-bottom: 20px;
+            padding: 0 30px;
+            max-height: 80vh;
+        }
+        &__text {
+            width: 40%;
+            flex: 1 1 365px;
+            text-align: justify;
+            .p();
+            padding: 0 10px 0 30px ;
+            margin-right: 20px;
+            max-height: 80vh;
+            overflow: auto;
+            &::-webkit-scrollbar {
+                width: 2px;
+            } 
+            &::-webkit-scrollbar-track {
+                background: lightgray;
+            } 
+            &::-webkit-scrollbar-thumb {
+                background-color: @black;  
+                border-radius: 15px;       
+            }
+        }
+    }
+}
+
+.figure-gallery {
+    background: @white;
+    padding-top: 60px;
+    padding-bottom: 15px;
+    position: relative;
+    height: auto;
+    &-title {
+        .h2();
+        margin-bottom: 10px;
+        text-align: center;
+        color: @black;
+    }
+}
+
+.figure-history {
+    background: @black;
+    margin-top: 100px;
+    position: relative;
+    padding-bottom: 80px;
+    padding: 0 60px 70px 60px;
+    &-title {
+        margin-bottom: 20px;
+        .h2();
+        color: @white;
+        text-align: center;
+    }
+    .line {
+        display: block;
+        position: absolute;
+        width: 2px;
+        height: calc(100% - 95px);
+        background: @white;
+        left: 50%;
+        z-index: 2;
+    }
+}
+
+.l-media({
+    .figure-history {
+        padding: 0 30px;
+    }
+});
+.m-media({
+    .figure-gallery {
+        padding-top: 50px;
+    }
+    .figure-intro {
+        margin-top: 20px;
+        height: calc(100vh - 93px);
+        &-title {
+            font-size: 60px;
+        }
+        &-footer {
+            padding: 0 60px;
+        }
+    }
+});
+
+.s-media({
+    .figure-intro {
+        &-bg {
+            display: none;
+            &.mobile {
+                display: block;
+            }
+        }
+        &-footer {
+            flex-direction: column-reverse;
+            &__text {
+                text-align: center;
+                width: 100%;
+            }
+        }
+        &-title {
+            padding: 0px;
+            font-size: 54px;
+        }
+    }
+    .figure-history {
+        padding: 0 15px;
+        margin-top: 50px;
+        margin-bottom: -75px;
+        .line {
+            display: none;
+        }
+    }
+    .figure-about {
+        &-title {
+            margin-bottom: 10px;
+            font-size: 45px;
+            line-height: 55px
+        }
+    }
+});
+
+.xs-media({
+    .figure-history {
+        &-title {
+            margin-bottom: 0;
+        }
+    }
+    .figure-about {
+        &-content {
+            // margin: 0 -15px;
+            &__text {
+                padding: 0 15px;
+                margin-right: 15px;
+            }
+            &__img {
+                padding: 0 15px
+            }
+        }
+    }
+    .figure-gallery {
+        &-title {
+            margin-bottom: 30px;
+        }
+    }
+    .figure-intro {
+        &-footer {
+            padding: 0 20px;
+            &__text {
+                font-size: 28px;
+                line-height: 40px;
+            }
+        }
+        &-header {
+            padding-top: 20px;
+        }
+        &-title {
+            font-size: 46px;
+            line-height: 60px;
+        }
+    }
+});

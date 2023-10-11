@@ -1,0 +1,73 @@
+.p() {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.05em;
+}
+
+.h1 {
+    font-family: 'Great Vibes';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 88px;
+}
+
+.h2 {
+    font-family: 'Great Vibes';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 75px;
+    letter-spacing: 0.05em;
+}
+
+.h3 {
+    font-family: 'Great Vibes';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: 0.05em;
+}
+
+.h4 {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.05em;
+}
+
+.auxiliary {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+}
+
+.xs-media(@content){
+    @media screen and (max-width: 480px){
+        @content();
+    }
+}
+.s-media(@content){
+    @media screen and (max-width: 800px){
+        @content();
+    }
+}
+.m-media(@content){
+    @media screen and (max-width: 1024px){
+        @content();
+    }
+}
+.l-media(@content){
+    @media screen and (max-width: 1280px){
+        @content();
+    }
+}

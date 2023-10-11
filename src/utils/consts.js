@@ -1,0 +1,7 @@
+export const HOME_ROUTE = '/'
+export const ARTISTS_ROUTE = '/artists'
+export const POETS_ROUTE = '/poets'
+export const SCULPTORS_ROUTE = '/sculptors'
+export const MUSICIANS_ROUTE = '/musicians'
+export const FIGURE_PAGE_ROUTE = '/figure'
+export const NOT_FOUND_ROUTE = '/404'

@@ -1,0 +1,5 @@
+export const CREATE_FIGURE_ROUTE = '/create-figure'
+export const EDIT_PAGE_ROUTE = '/edit-figure'
+export const ADMIN_ROUTE = '/'
+export const LOGIN_ROUTE = '/login'
+export const NOT_FOUND_ROUTE = '/404'

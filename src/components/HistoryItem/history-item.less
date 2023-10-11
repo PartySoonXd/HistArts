@@ -1,0 +1,222 @@
+.figure-history-item {
+    display: flex;
+    width: 50%;
+    position: relative; 
+    background: @black;
+    color: @white;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin-bottom: 20px;
+    &.right-side {
+        padding-left: 60px;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+    &-audio-player {
+        display: flex;
+        float: left;
+        flex-direction: column;
+        align-items: center;
+        max-width: 250px;
+        width: 100%;
+        margin-right: 20px;
+        border: 2px solid @black;
+        padding: 15px 0 0 0;
+        box-sizing: border-box;
+        &__img {
+            width: 150px;
+            margin-bottom: 15px;
+        }
+    }
+    &-text-item {
+        background: url('../../assets/images/old-paper-texture.jpg');
+        max-width: 400px;
+        max-height: 500px;
+        width: 100%;
+        padding: 25px;
+        margin-right: 10px;
+        padding-right: 60px;
+        box-sizing: border-box;
+        float: left;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: @white;  
+            border-radius: 15px;       
+            box-sizing: border-box;
+            border: 1px solid @black;
+        }
+        &-container {
+            white-space: pre-wrap;
+            text-align: justify;
+            word-wrap: normal;
+            color: @black;
+            font-size: 26px;
+            line-height: 30px;
+            font-family: 'great vibes';
+        }
+    }
+    &__img {
+        width: 100%;
+        max-width: 360px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        float:left;
+        object-fit: contain;
+        &.horizontal {
+            max-width: 75%;
+        }
+    }
+    &-info {
+        flex-grow: 1;
+        align-self: baseline;
+        &__title {
+            .h4();
+            text-transform: uppercase;
+        }
+        &__years {
+            .auxiliary();
+            position: relative;
+            margin-bottom: 10px;
+        }
+        &__description {
+            .p();
+            text-align: justify;
+            padding-right: 60px;
+            box-sizing: border-box;
+            width: 100%;
+            max-height: 620px;
+            overflow: hidden;
+            &.right-side {
+                padding: 0;
+            }
+        }
+    }
+    .item-line {
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        background: @white;
+        right: 0;
+        top: 50px;
+        transform-origin: right;
+        &.right-side {
+            left: 0;
+            transform-origin: left;
+        }   
+    } 
+}
+
+
+
+.l-media({
+    .figure-history-item {
+        padding: 0;
+        &__img {
+            &.horizontal {
+                max-width: 100%;
+            }
+        }
+        .item-line {
+            width: 30px;
+            &.right-side {
+                width: 30px;
+            }
+        }
+        &.right-side {
+            padding-left: 40px;
+        }
+        &-info {
+            &__description {
+                padding-right: 40px
+            }
+        }
+        &-text-item {
+            padding-right: 40px;
+            max-width: 65%;
+        }
+    }
+});
+.s-media({
+    .figure-history-item {
+        width: 100%;
+        margin-bottom: 0;
+        box-sizing: border-box;
+        padding: 30px 15px;
+        z-index: 1;
+        height: 100vh;
+        &-wrapper {
+            margin: 0 -15px 100px;
+            position: sticky; 
+            top: 0px;
+        }
+        .item-line {
+            display: none;
+        }
+        &.right-side {
+            background: @white;
+            color: @black;
+            padding: 30px 15px;
+        }
+        &-info {
+            &__description {
+                max-height: 900px;
+                padding: 0;
+                margin-bottom: 10px;
+            }
+        }
+        &-audio-player__img {
+            mix-blend-mode: difference;
+            height: 18vh;
+            object-fit: contain
+        }
+
+    }
+});
+
+.xs-media({
+    .figure-history-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+        &-audio-player {
+            margin: 0;
+        }
+        &-text-item, 
+        &-audio-player, 
+        &__img.horizontal {
+            margin: 0 0 10px 0;
+            max-width: 100%;
+        }
+        &-text-item {
+            max-height: 310px;
+            height: 100%;
+            &.modal-text {
+                position: relative;
+                z-index: 1;
+                max-height: 70%;
+                overflow: auto;
+            }
+        }
+        &-info {
+            &__title {
+                text-align: center;
+            }
+            // &__description {
+            //     height: 425px
+            // }
+        }
+    }
+});

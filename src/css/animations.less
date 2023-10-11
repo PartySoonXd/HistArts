@@ -1,0 +1,104 @@
+.fade-in {
+    animation: fade-in 1s ease both;
+}
+@keyframes fade-in {
+    0%,50% {
+        opacity: 0
+    }
+}
+
+.ease-top {
+    animation: ease-top .5s ease;
+    position: relative;
+    &.black {
+        &::before {
+            background: #000;
+        }
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 100%;
+        background: @black;
+        animation: h-to-right 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    }
+}
+@keyframes ease-top {
+	0%, 10% {
+	    opacity: 0;
+    }
+	10% {
+		transform: translate(0, 30px);
+    }
+    
+}
+@keyframes h-to-right{
+    0%,100% {
+		width: calc(100% + 20px)
+    }
+	0% {
+        -webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+        clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+    }
+	100% {
+        -webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+}
+.slide-up {
+    animation: slide-up .5s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+@keyframes slide-up{
+    0%, 20% {
+        opacity: 0;
+    }
+    20% {
+        transform: translate(0, 20px);
+    }
+}
+.slide-down {
+    animation: slide-down .5s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+@keyframes slide-down{
+    0%, 20% {
+        opacity: 0;
+    }
+    20% {
+        transform: translate(0, -20px);
+    }
+}
+.slide-right {
+    animation: slide-right .5s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+@keyframes slide-right{
+    0%, 20% {
+        opacity: 0;
+    }
+    20% {
+        transform: translate(-20px, 0);
+    }
+}
+
+@keyframes scale-x {
+    0% {transform: scaleX(0)}
+    100% {transform: scaleX(1)}
+}
+@keyframes scale-y {
+    0% {transform: scaleY(0)}
+    100% {transform: scaleY(1)}
+}
+
+.delay-500 {
+    animation-delay: .5s;
+}
+.delay-1000 {
+    animation-delay: 1s;
+}
+.delay-1500 {
+    animation-delay: 1.5s;
+}

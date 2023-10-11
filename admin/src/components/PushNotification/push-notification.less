@@ -1,0 +1,61 @@
+.push-notification {
+    z-index: 111;
+    width: 350px;
+    position: fixed;
+    background: @white;
+    top: 10px;
+    left: 10px;
+    padding: 15px;
+    transform: translateX(-120%);
+    transition: transform .25s ease;
+
+    &.active {
+        transform:  translateX(0);
+        transition: transform .15s ease;
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: @black;
+            opacity: .6;
+            bottom: 2px;
+            left: 0;
+            animation-name: life-cycle;
+            animation-duration: 3.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+    }
+
+    &__title {
+        color: @black;
+        display: inline-block;
+        .h4();
+    }
+    &__text {
+        .p();
+        color: @black;
+    }
+    
+}
+
+@keyframes life-cycle {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+.xs-media({
+    .push-notification {
+        width: 250px;
+        &__text {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }        
+});

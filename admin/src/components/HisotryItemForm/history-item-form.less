@@ -1,0 +1,51 @@
+.history-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 75%;
+    position: relative;
+    &-fields {
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+        &-years {
+            display: flex;
+            align-items: center;
+        }
+    }
+    &-file-selector {
+        display: flex;
+        align-items: center;
+    }
+    .text-field {
+        margin-bottom: 10px;
+    }
+    .textarea-field {
+        margin: 10px 0 0 0;
+        height: 150px;
+        width: 600px;
+        &.history-item {
+            margin: 0;
+            height: 270px;
+        }
+    }
+    &-preview {
+        height: auto;
+    }
+    &-label {
+        height: auto;
+        align-self: center;
+    }    
+    .year-field {
+        width: 90px;
+        height: 50px;
+        margin: 0;
+    }
+    .line {
+        background: @white;
+        width: 20px;
+        height: 2px;
+        margin: 23px 10px 0;
+        align-self: flex-start;
+    }
+}

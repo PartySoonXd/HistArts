@@ -1,0 +1,205 @@
+.slider {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    padding-bottom: 70px;
+    padding-top: 10px;
+    &-item {
+        height: 80vh;
+        max-height: 1000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        &.audio-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+        }
+        .audio-item-container {
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            border: 2px solid @black;
+            flex-direction: column;
+            align-items: center;
+        }
+        .audio-item__icon {
+            min-height: 120px;
+            width: 100%;
+            object-fit: contain;
+            margin: auto 0 20px;
+            margin-bottom: 20px;
+        }
+        &__img {
+            display: block;
+            max-height: 100%;
+        }
+        &__name {
+            .h3();
+            letter-spacing: .08em;
+            color: @black;
+            position: absolute;
+            text-align: center;
+            background: @white;
+            padding: 3px 20px;
+            left: 10px;
+            top: 10px;
+
+        }
+        &-content {
+            width: 100%;
+            position: relative;
+            overflow: auto;
+            &__text {
+                padding: 100px 50px 50px 50px;
+                font-family: "great vibes";
+                font-size: 32px;
+                letter-spacing: .09em;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+                overflow-y: hidden;
+            }
+        }
+        &-container {
+            background: url('../../assets/images/old-paper-texture.jpg');
+            white-space: pre-wrap;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            width: 500px;
+            height: 100%;
+            margin: auto;
+        }
+    }
+    &-arrow {
+        color: @black;
+    }
+}
+
+.swiper-horizontal > .swiper-pagination-progressbar, 
+.swiper-pagination-progressbar.swiper-pagination-horizontal {
+    top: 0px;
+    width: 100%;
+}
+.swiper-pagination-progressbar
+.swiper-pagination-progressbar-fill {
+    background: @black;
+}
+.swiper {
+    &-slide {
+        width: auto;
+    }
+    &-pagination {
+        height: 2px !important;
+        display: flex;
+        position: absolute;
+        background: lightgray;
+    }
+}
+
+.slider-item-content::-webkit-scrollbar {
+    width: 7px;
+} 
+.slider-item-content::-webkit-scrollbar-track {
+    background: transparent;
+} 
+.slider-item-content::-webkit-scrollbar-thumb {
+    background-color: @white;  
+    border-radius: 15px;       
+    box-sizing: border-box;
+    border: 1px solid @black;
+}
+
+.m-media({
+    .slider {
+        &-item {
+            &-container {
+                max-width: 400px;
+                &__text {
+                    padding: 80px 25px 25px 25px;
+                    font-size: 26px;
+    
+                }
+            }
+            &.audio-item {
+                max-width: 350px;
+            }
+        }
+    }
+});
+
+.s-media({
+    .slider {
+        &-item {
+            &-container {
+                max-width: 380px;
+            }
+            &-content {
+                &__text {
+                    width: 100%;    
+                }
+            }
+            &.audio-item {
+                max-width: 320px;
+            }
+        }
+    }
+});
+
+.xs-media({
+    .slider {
+        &-item {
+            height: 60vh;
+            &-container {
+                max-width: 300px;
+            }
+            &-content {
+                &__text {
+                    padding: 80px 25px 25px 25px;
+                    font-size: 24px;
+                }
+            }
+            &.audio-item {
+                max-width: 280px;
+            }
+        }
+    }
+});
+
+.navigation {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    bottom: 0px;
+    right: 50%;
+    transform: translateX(50%);
+    .prev-arrow, .next-arrow {
+        width: 60px;
+        height: 60px;
+        padding: 20px;
+        background-color: @black;
+        background-image: url(../../assets/images/arrow-btn.svg);
+        background-size: 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-sizing: border-box;
+        border-radius: 50%;
+        margin: 0;
+        &::after, &::before {
+            font-size: 0;
+        }
+    }
+    .prev-arrow {
+        transform: rotateZ(90deg);
+        margin-right: 30px;
+    }
+    .next-arrow {
+        transform: rotateZ(-90deg);
+    }
+}

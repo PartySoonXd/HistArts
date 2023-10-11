@@ -1,0 +1,29 @@
+
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 25px;
+    .home-link {
+        cursor: pointer;
+        margin: 0 auto;
+    }
+    .login-logout-link {
+        cursor: pointer;
+        img {
+            width: 50px;
+            height: auto;
+        }
+        margin-right: 25px;
+        margin-left: -75px;
+    }
+    .home-link, .login-logout-link {
+        opacity: 1;
+        transition: all .3s ease;
+    }
+    .home-link:hover, .login-logout-link:hover {
+        opacity: .8;
+        transition: all .3s ease;
+        
+    }
+}
