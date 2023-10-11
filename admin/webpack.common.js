@@ -15,7 +15,6 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: 'build/bundle.js',
         assetModuleFilename: 'assets/[hash][ext]',
-        publicPath: "/",
     },
     module: {
         rules: [
