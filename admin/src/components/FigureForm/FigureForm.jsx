@@ -121,14 +121,14 @@ export const FigureForm = (props) => {
             }
             if (currentTarget === "introImg") {
                 setIntroImgLoading(true)
-                await imageCompression(blob, {maxSizeMB: 1, maxIteration: 5, maxWidthOrHeight: 1920, useWebWorker: true}).then((data) => {
+                await imageCompression(blob, {maxSizeMB: 1.2, maxIteration: 1, maxWidthOrHeight: 1280, useWebWorker: true}).then((data) => {
                     setIntroImgBlob(data)
                     setIntroImgLoading(false)
                 })
             }
             if (currentTarget === "introMobileImg") {
                 setIntroMobileImgLoading(true)
-                await imageCompression(blob, {maxSizeMB: 1, maxIteration: 5, maxWidthOrHeight: 1920, useWebWorker: true}).then((data) => {
+                await imageCompression(blob, {maxSizeMB: .8, maxIteration: 1, maxWidthOrHeight: 1280, useWebWorker: true}).then((data) => {
                     setIntroMobileImgBlob(data)
                     setIntroMobileImgLoading(false)
                 })

@@ -4,7 +4,7 @@ const router = new Router()
 const figureRouter = require('./FigureRouter') 
 const citateRouter = require('./CitateRouter')
 const subscribeRouter = require('./SubscribeRouter')
-const userRouter = require('../routes/UserRouter')
+const userRouter = require('./UserRouter')
 
 router.use('/figure', figureRouter)
 router.use('/citate', citateRouter)
