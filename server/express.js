@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 
-const {sequelize} = require('./db.js')
+const sequelize = require('./db.js')
 const routes = require('./routes/index.js')
 
 const errorMiddleware = require('./middlewares/ErrorMiddleware')
@@ -20,9 +20,13 @@ const corsOptions = {
         "Access-Control-Allow-Origin": "http://localhost:8800",
         "Access-Control-Allow-Credentials": true,
     },
-    origin: ['http://localhost:8800', "http://192.168.1.33:8088"]
+    origin: ['http://localhost:8800', "http://localhost:8088"]
 }
 app.use(cors(corsOptions))
+app.get("/info", (req, res) => {
+    const info = {1: "info"}
+    return res.json({info})
+})
 app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, './static')))
@@ -34,7 +38,7 @@ app.use(errorMiddleware)
 const start = async() => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync()
+        await sequelize.sync({force: false})
         app.listen(port, host, () => {
             console.log(`server started at <http://${host}:${port}>` )
         })

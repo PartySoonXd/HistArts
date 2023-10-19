@@ -12,8 +12,8 @@ module.exports = {
     },
     entry: "./src/index.jsx",
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: 'build/bundle.js',
+        path: path.resolve(__dirname, "build"),
+        filename: 'public/bundle.js',
         assetModuleFilename: 'assets/[hash][ext]',
     },
     module: {
@@ -37,7 +37,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({}), 
         new MiniCssExtractPlugin({
-            filename: "build/styles.css",
+            filename: "public/styles.css",
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',

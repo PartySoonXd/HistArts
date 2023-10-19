@@ -1,7 +1,7 @@
 const db = require('../db')
 const { DataTypes } = require('sequelize')
 
-const User = db.sequelize.define('user', {
+const User = db.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     username: {type: DataTypes.STRING, require: true},
     password: {type: DataTypes.STRING, require: true},
@@ -9,7 +9,7 @@ const User = db.sequelize.define('user', {
     timestamps: false,
 })
 
-const Token = db.sequelize.define('token', {
+const Token = db.define('token', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     refreshToken: {type: DataTypes.STRING, require: true}
 })

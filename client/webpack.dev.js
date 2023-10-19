@@ -6,11 +6,12 @@ module.exports = merge(common, {
         publicPath: "/"
     },
     devServer: {
+        host: "0.0.0.0",
         port: 8088,
         historyApiFallback: true,
         hot: true,
         proxy: {
-            '/api': 'http://localhost:3001'
+            '/api': 'http://0.0.0.0:3001'
         }
     },
     mode: "development",

@@ -1,7 +1,7 @@
 const db = require('../db')
 const { DataTypes } = require('sequelize')
 
-const Citate = db.sequelize.define('citates', {
+const Citate = db.define('citates', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     text: {type: DataTypes.STRING},
     author: {type: DataTypes.STRING},

@@ -14,7 +14,7 @@ module.exports = {
     entry: "./src/index.jsx",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'build/bundle.js',
+        filename: 'public/bundle.js',
         assetModuleFilename: 'assets/[hash][ext]',
         publicPath: "/",
     },
@@ -39,7 +39,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({}), 
         new MiniCssExtractPlugin({
-            filename: "build/styles.css",
+            filename: "public/styles.css",
         }),
         new HtmlWebpackPlugin({
             filename: './index.html',
@@ -68,15 +68,4 @@ module.exports = {
             "buffer": require.resolve("buffer/"),
         }
     },
-    devServer: {
-        port: 8800,
-        historyApiFallback: true,
-        hot: true,
-        proxy: {
-            '/api': 'http://192.168.1.33:3001'
-        }
-    },
-    // devtool: 'eval-cheap-module-source-map',
-    mode: "development",
-    devtool: 'source-map'
 };

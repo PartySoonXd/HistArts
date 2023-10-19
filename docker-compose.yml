@@ -1,0 +1,69 @@
+services:
+  postgres:
+    container_name: hist-arts_db
+    image: postgres:15
+    volumes:
+      - data_postgres:/var/lib/postgresql/data
+    ports:
+      - 0.0.0.0:5432:5432
+    restart: on-failure
+    environment:
+      # database_url: postgres://postgres:root@postgres:5432/HistArts_DB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: HistArts_DB
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin4_container
+  #   restart: always
+  #   ports:
+  #     - "5050:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: root
+  #   volumes:
+  #     - pgadmin-data:/var/lib/pgadmin
+
+  # admin:
+  #   env_file: /admin/.env
+  #   container_name: hist-arts_admin
+  #   image: node:20-alpine3.17
+  #   build: /admin
+  #   depends_on:
+  #     - server
+  #   ports:
+  #     - 8800:8800
+  #   restart: on-failure
+
+  client:
+    env_file: /client/.env
+    container_name: hist-arts_client
+    build: /client
+    depends_on:
+      - server
+    ports:
+      - 8088:8088
+    command: yarn dev
+    restart: on-failure
+
+  server:
+    env_file: /server/.env
+    container_name: hist-arts_server
+    build: /server
+    ports:
+      - 0.0.0.0:3001:3001
+    command: yarn server
+    # environment: 
+    #   - EXTERNAL_PORT=3001
+    #   - PGDATABASE=HistArts_DB
+    #   - PGUSER=postgres
+    #   - PGPASSWORD=root
+    #   - PGHOST=postgres
+    depends_on:
+      - postgres
+    restart: on-failure
+
+volumes:
+  pgadmin-data:
+  data_postgres:

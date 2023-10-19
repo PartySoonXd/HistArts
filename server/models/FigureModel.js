@@ -1,14 +1,14 @@
 const { DataTypes } = require('sequelize')
 const db = require('../db')
 
-const Figure = db.sequelize.define('figure', {
+const Figure = db.define('figure', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 },
 {
     timestamps: false
 })
 
-const FigureInfo = db.sequelize.define('figure_info', {
+const FigureInfo = db.define('figure_info', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     firstName: {type: DataTypes.STRING},
     secondName: {type: DataTypes.STRING},
@@ -22,7 +22,7 @@ const FigureInfo = db.sequelize.define('figure_info', {
     timestamps: false
 })
 
-const Header = db.sequelize.define('header', {
+const Header = db.define('header', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     headerImg: {type: DataTypes.STRING},
     headerName: {type: DataTypes.STRING}
@@ -31,7 +31,7 @@ const Header = db.sequelize.define('header', {
     timestamps: false
 })
 
-const About = db.sequelize.define('about', {
+const About = db.define('about', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     figureImg: {type: DataTypes.STRING},
     aboutText: {type: DataTypes.TEXT},
@@ -40,14 +40,14 @@ const About = db.sequelize.define('about', {
     timestamps: false
 })
 
-const Gallery = db.sequelize.define('gallery', {
+const Gallery = db.define('gallery', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}
 },
 {
     timestamps: false
 })
 
-const GalleryItem = db.sequelize.define('gallery_item', {
+const GalleryItem = db.define('gallery_item', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     galleryFile: {type: DataTypes.TEXT},
     galleryName: {type: DataTypes.STRING}, 
@@ -56,7 +56,7 @@ const GalleryItem = db.sequelize.define('gallery_item', {
     timestamps: false
 })
 
-const History = db.sequelize.define('history', {
+const History = db.define('history', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 },
 {
@@ -64,7 +64,7 @@ const History = db.sequelize.define('history', {
 })
 
 
-const HistoryItem = db.sequelize.define('history_item', {
+const HistoryItem = db.define('history_item', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     historyFile: {type: DataTypes.TEXT},
     historyTitle: {type: DataTypes.STRING},
