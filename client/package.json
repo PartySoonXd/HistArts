@@ -50,17 +50,10 @@
     "mini-css-extract-plugin": "^2.7.6",
     "node-loader": "^2.0.0",
     "open-browser-webpack-plugin": "^0.0.5",
-    "react-error-overlay": "^6.0.9",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
     "webpack-merge": "^5.9.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": [
     ">0.2%",
