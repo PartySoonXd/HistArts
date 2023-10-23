@@ -20,7 +20,7 @@ const corsOptions = {
         "Access-Control-Allow-Origin": "http://localhost:8800",
         "Access-Control-Allow-Credentials": true,
     },
-    origin: ['http://localhost:8800', "http://localhost:8088"]
+    origin: [process.env.CLIENT_URL, process.env.ADMIN_URL]
 }
 app.use(cors(corsOptions))
 app.get("/info", (req, res) => {

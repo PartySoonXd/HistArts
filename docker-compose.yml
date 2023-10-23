@@ -8,7 +8,6 @@ services:
       - 0.0.0.0:5432:5432
     restart: on-failure
     environment:
-      # database_url: postgres://postgres:root@postgres:5432/HistArts_DB
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
       POSTGRES_DB: HistArts_DB
@@ -20,32 +19,33 @@ services:
   #   ports:
   #     - "5050:80"
   #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
-  #     PGADMIN_DEFAULT_PASSWORD: root
+  #     PGADMIN_DEFAULT_EMAIL: histartsadm@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: histadmin
   #   volumes:
   #     - pgadmin-data:/var/lib/pgadmin
 
-  # admin:
-  #   env_file: /admin/.env
-  #   container_name: hist-arts_admin
-  #   image: node:20-alpine3.17
-  #   build: /admin
-  #   depends_on:
-  #     - server
-  #   ports:
-  #     - 8800:8800
-  #   restart: on-failure
-
-  client:
-    env_file: /client/.env
-    container_name: hist-arts_client
-    build: /client
+  admin:
+    build: /admin
+    container_name: hist-arts_admin
+    env_file: /admin/.env
+    ports:
+      - 8800:80
     depends_on:
       - server
-    ports:
-      - 8088:8088
-    command: yarn dev
     restart: on-failure
+    command: nginx -g 'daemon off;'
+
+
+  client:
+    build: /client
+    container_name: hist-arts_client
+    env_file: /client/.env
+    ports:
+      - "8088:80"
+    depends_on:
+      - server
+    restart: on-failure
+    command: nginx -g 'daemon off;'
 
   server:
     env_file: /server/.env
@@ -54,12 +54,6 @@ services:
     ports:
       - 0.0.0.0:3001:3001
     command: yarn server
-    # environment: 
-    #   - EXTERNAL_PORT=3001
-    #   - PGDATABASE=HistArts_DB
-    #   - PGUSER=postgres
-    #   - PGPASSWORD=root
-    #   - PGHOST=postgres
     depends_on:
       - postgres
     restart: on-failure
@@ -67,3 +61,4 @@ services:
 volumes:
   pgadmin-data:
   data_postgres:
+  # nginx-data:

@@ -1,7 +1,12 @@
-FROM node:20-alpine3.17
+FROM node:20-alpine3.17 as build
 WORKDIR /app/admin
-EXPOSE 8800
 COPY package.json .
 RUN npm install
 COPY . .
-CMD ["yarn", "dev"]
+RUN yarn build
+# CMD ["yarn", "build"]
+
+FROM nginx:latest
+COPY --from=build /app/admin/build /usr/share/nginx/html/ 
+COPY --from=build /app/admin/nginx.conf /etc/nginx/conf.d/nginx.conf
+CMD ["nginx", "-g", "daemon off;"]
