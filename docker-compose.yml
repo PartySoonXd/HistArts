@@ -27,6 +27,7 @@ services:
   admin:
     build: /admin
     container_name: hist-arts_admin
+    image: partysoonxd/hist-arts_admin:latest
     env_file: /admin/.env
     ports:
       - 8800:80
@@ -39,6 +40,7 @@ services:
   client:
     build: /client
     container_name: hist-arts_client
+    image: partysoonxd/hist-arts_client:latest
     env_file: /client/.env
     ports:
       - "8088:80"
@@ -50,6 +52,7 @@ services:
   server:
     env_file: /server/.env
     container_name: hist-arts_server
+    image: partysoonxd/hist-arts_server:latest
     build: /server
     ports:
       - 0.0.0.0:3001:3001
@@ -61,4 +64,3 @@ services:
 volumes:
   pgadmin-data:
   data_postgres:
-  # nginx-data:
