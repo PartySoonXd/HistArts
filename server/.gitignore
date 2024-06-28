@@ -11,6 +11,8 @@
 # production
 /dist
 
+/static
+
 # misc
 .DS_Store
 .env
