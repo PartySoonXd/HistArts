@@ -48,6 +48,7 @@ class UserService {
             throw ApiError.UnauthorizedError()
         }
         const user = await User.findOne({where: userData.id})
+        console.log(userData.id)
         const username = user.username
         const password = user.password
         const tokens = TokenService.generateJWT({username, password})
