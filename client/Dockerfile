@@ -7,5 +7,5 @@ RUN yarn build
 
 FROM nginx:latest
 COPY --from=build /app/client/dist /usr/share/nginx/html/ 
-COPY --from=build /app/client/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY --from=build /app/client/default.conf /etc/nginx/conf.d/default.conf
 CMD ["nginx", "-g", "daemon off;"]
