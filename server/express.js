@@ -17,16 +17,12 @@ const host = process.env.HOST || 'localhost'
 const corsOptions = {
     credentials: true,
     exposedHeaders: {
-        "Access-Control-Allow-Origin": "http://localhost:8800",
+        "Access-Control-Allow-Origin": process.env.ADMIN_URL,
         "Access-Control-Allow-Credentials": true,
     },
     origin: [process.env.CLIENT_URL, process.env.ADMIN_URL]
 }
-app.use(cors(corsOptions))
-app.get("/info", (req, res) => {
-    const info = {1: "info"}
-    return res.json({info})
-})
+app.use(cors(corsOptions)) 
 app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, './static')))
@@ -38,7 +34,7 @@ app.use(errorMiddleware)
 const start = async() => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync({force: false})
+        await sequelize.sync()
         app.listen(port, host, () => {
             console.log(`server started at <http://${host}:${port}>` )
         })
