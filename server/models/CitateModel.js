@@ -1,4 +1,4 @@
-const db = require('../db')
+const {db} = require('../db')
 const { DataTypes } = require('sequelize')
 
 const Citate = db.define('citates', {
@@ -16,7 +16,7 @@ const Citate = db.define('citates', {
 //     author: {type: DataTypes.STRING},
 //   }, {
 //     timestamps: false,
-//     sequelize, // We need to pass the connection instance
+//     db, // We need to pass the connection instance
 //     modelName: 'User' // We need to choose the model name
 //   });
 

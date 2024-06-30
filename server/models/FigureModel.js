@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const db = require('../db')
+const {db} = require('../db')
 
 const Figure = db.define('figure', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
