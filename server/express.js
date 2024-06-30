@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 
-const sequelize = require('./db.js')
+const {db} = require('./db')
 const routes = require('./routes/index.js')
 
 const errorMiddleware = require('./middlewares/ErrorMiddleware')
@@ -33,13 +33,13 @@ app.use(errorMiddleware)
 
 const start = async() => {
     try {
-        await sequelize.authenticate()
-        await sequelize.sync()
+        await db.authenticate()
+        await db.sync()
         app.listen(port, host, () => {
             console.log(`server started at <http://${host}:${port}>` )
         })
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 }
 
