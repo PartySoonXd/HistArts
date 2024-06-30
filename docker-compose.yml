@@ -5,17 +5,15 @@ services:
     volumes:
       - data_postgres:/var/lib/postgresql/data
     ports:
-      - 0.0.0.0:5432:5432
+      - 5432:80
     restart: on-failure
     environment:
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: HistArts_DB
 
   admin:
     build: /admin
     container_name: hist-arts_admin
-    env_file: /admin/.env
+    env_file: /admin/.env.local
     ports:
       - 8800:80
     depends_on:
@@ -27,7 +25,7 @@ services:
   client:
     build: /client
     container_name: hist-arts_client
-    env_file: /client/.env
+    env_file: /client/.env.local
     ports:
       - "8088:80"
     depends_on:
@@ -36,15 +34,26 @@ services:
     command: nginx -g 'daemon off;'
 
   server:
-    env_file: /server/.env
+    env_file: /server/.env.local
     container_name: hist-arts_server
     build: /server
     ports:
-      - 0.0.0.0:3001:3001
+      - 3001:3001
     command: yarn server
     depends_on:
       - postgres
     restart: on-failure
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "5555:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: unless-stopped
 
 volumes:
   pgadmin-data:
