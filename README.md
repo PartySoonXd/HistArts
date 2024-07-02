@@ -6,15 +6,12 @@ HistArts it is the website that has historical information about different creat
 - React
 - Framer-motion 
 - Axios
-
 ### Backend
 - Express
 - Sequelize
-
 ### Admin
 - React 
 - MobX
 - Axios
-
 ### Database 
 - PostgreSQL
