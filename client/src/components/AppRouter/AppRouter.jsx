@@ -12,19 +12,7 @@ const NotFoundPage = React.lazy(() => import("../../pages/ErrorPages/NotFoundPag
 
 const AppRouter = () => {
     const location = useLocation()
-    // useEffect(()=> {
-    //     console.log(location.pathname)
-    //     setIsLoading(true)
-    //     setTimeout(() => {
-    //       setIsLoading(false)
-    //     }, 500)
-    // }, [location])
-
-    // if(isLoading) {
-    //     document.body.style.display = "none"
-    // } else {
-    //     document.body.style.display = "block"
-    // }
+    
     return (
         <Routes location={location} key={location.pathname}>
             <Route path={HOME_ROUTE} element={<HomePage/>}/>
