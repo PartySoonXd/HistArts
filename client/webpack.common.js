@@ -2,7 +2,6 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin  = require('html-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
 
@@ -53,12 +52,5 @@ module.exports = {
     ],
     resolve: {
         extensions: [ '.ts', '.jsx', '.css', '.less', '.js' ],
-        // fallback: {
-        //     "path": require.resolve("path-browserify"),
-        //     "crypto": require.resolve("crypto-browserify"),
-        //     "os": require.resolve("os-browserify/browser"),
-        //     "stream": require.resolve("stream-browserify"),
-        //     "buffer": require.resolve("buffer/"),
-        // }
     },
 }

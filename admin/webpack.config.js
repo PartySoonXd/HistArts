@@ -2,7 +2,6 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin  = require('html-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
 
@@ -51,12 +50,6 @@ module.exports = {
         new webpack.ProvidePlugin({
             process: 'process/browser',
         }),
-        // new TerserPlugin({
-        //     terserOptions: {
-        //         keep_classnames: true,
-        //         keep_fnames: true,
-        //     },
-        // })
     ],
     resolve: {
         extensions: [ '.ts', '.jsx', '.css', '.less', '.js' ],
