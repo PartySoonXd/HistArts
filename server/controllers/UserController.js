@@ -43,6 +43,15 @@ class UserController {
             next(error)
         }
     }
+
+    async getUsersCount(req, res, next) {
+        try {
+            const usersCount = await UserService.getUsersCount()
+            return res.json(usersCount)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = new UserController()
