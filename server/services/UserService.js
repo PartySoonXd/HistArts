@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt')
 
 class UserService {
     async register(password, username) {
-        const candidate = await User.findOne({where: {username}})
-        if(candidate) {
-            throw ApiError.BadRequest('User with the same name already exists')
+        const users = await this.getUsersCount()
+        if(users >= 1) {
+            throw ApiError.BadRequest('Admin user already created. Please login.')
         }
         const hashPass = await bcrypt.hash(password, 3)
         const user = await User.create({password: hashPass, username})
@@ -20,13 +20,14 @@ class UserService {
     async login(username, password) {
         const user = await User.findOne({where: {username}})
         if (!user) {
-            throw ApiError.BadRequest('Uncorrect username')
+            throw ApiError.BadRequest('Uncorrect username or password')
         }
-        
+
         const isPassEquals = bcrypt.compareSync(password, user.password)
         if (!isPassEquals) {
-            throw ApiError.BadRequest('Uncorrect password')
+            throw ApiError.BadRequest('Uncorrect username or password')
         }
+        
         const tokens = TokenService.generateJWT({username, password})
     
         await TokenService.saveToken(user.id, tokens.refreshToken)
@@ -56,6 +57,11 @@ class UserService {
         await TokenService.saveToken(user.id, tokens.refreshToken)
         
         return {...tokens, user}
+    }
+
+    async getUsersCount() {
+        const users = await User.findAll()
+        return users.length
     }
 }
 
