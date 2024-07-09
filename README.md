@@ -61,3 +61,13 @@ npm run dev
 After this you can open apps in your browser
 - Client - http://localhost:8088
 - Admin - http://localhost:8800
+## Run with docker
+1. Run docker-copmpose
+```bash
+docker-compose up
+```
+After this you can open apps in your browser
+- Client - http://localhost:8088
+- Admin - http://localhost:8800
+## Feedback
+Vladislav Belomestnykh - vladislav.webdeveloper@gmail.com
