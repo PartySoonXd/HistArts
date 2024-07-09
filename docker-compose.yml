@@ -2,13 +2,12 @@ services:
   postgres:
     container_name: hist-arts_db
     image: postgres:15
+    env_file: /server/.env.local
     volumes:
       - data_postgres:/var/lib/postgresql/data
     ports:
       - 5432:80
     restart: on-failure
-    environment:
-      POSTGRES_PASSWORD: root
 
   admin:
     build: /admin
