@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({path: [".env.local"]})
 const cors = require('cors')
 const path = require('path')
 const fileUpload = require('express-fileupload')
