@@ -22,3 +22,42 @@ HistArts it is the website that has historical information about different creat
 - Axios
 ### Database 
 - PostgreSQL
+## Run locally
+1. Clone the project
+```bash
+git clone https://github.com/PartySoonXd/HistArts.git
+```
+2. Go to the server directory
+```bash
+cd server
+```
+3. Install dependencies
+```bash
+npm install
+```
+4. Rename .env.example to .env.local
+5. Go to the client directory
+```bash
+cd client
+```
+6. Install dependencies
+```bash
+npm install
+```
+7. Rename .env.example to .env.local
+8. Go to the admin directory
+```bash
+cd admin
+```
+9. Install dependencies
+```bash
+npm install
+```
+10. Rename .env.example to .env.local
+11. Run app from root directory
+```bash
+npm run dev
+```
+After this you can open apps in your browser
+- Client - http://localhost:8088
+- Admin - http://localhost:8800
