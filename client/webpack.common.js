@@ -45,7 +45,7 @@ module.exports = {
             favicon: "./src/assets/images/favicon.ico",
             minify: false
         }),
-        new Dotenv(),
+        new Dotenv({path: ".env.local"}),
         new webpack.ProvidePlugin({
             process: 'process/browser',
         }),
