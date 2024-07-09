@@ -58,7 +58,11 @@ cd admin
 npm install
 ```
 11. Rename .env.example to .env.local
-12. Run app from root directory
+12. Install dependencies in root directory
+```bash
+npm install
+```
+13. Run app from root directory
 ```bash
 npm run dev
 ```
