@@ -1,7 +1,7 @@
 import React, {useLayoutEffect, useContext, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
-import { ADMIN_ROUTE, CREATE_FIGURE_ROUTE, EDIT_PAGE_ROUTE, LOGIN_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, CREATE_FIGURE_ROUTE, EDIT_PAGE_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "./utils/consts";
 import AdminPage from "./pages/AdminPage/AdminPage"
 import CreateFigurePage from "./pages/CreateFigurePage/CreateFigurePage"
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
@@ -9,12 +9,13 @@ import logo from "./assets/images/Logo.png"
 import loginBtn from "./assets/images/login-btn.png"
 import logoutBtn from "./assets/images/logout-btn.png"
 import { EditFigurePage } from "./pages/EditFigurePage/EditFigurePage";
-import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { Context } from "./context/Context";
 import {check} from "./http/userAPI"
 import { logout } from "./http/userAPI";
 import { observer } from "mobx-react-lite";
 import { AuthProvider } from "./components/AuthProvider/AuthProvider";
+import { LoginPage } from "./pages/AuthPages/LoginPage";
+import { RegisterPage } from "./pages/AuthPages/RegisterPage";
 
 const App = observer(() => {
   const {user} = useContext(Context)
@@ -80,6 +81,7 @@ const App = observer(() => {
             </AuthProvider>
           }/>
           <Route path={LOGIN_ROUTE} element={<LoginPage/>}/>
+          <Route path={REGISTER_ROUTE} element={<RegisterPage/>}/>
           <Route path="/404" element={<NotFoundPage/>}/>
           <Route path="/*" element={<NotFoundPage/>}/>
         </Routes> 
