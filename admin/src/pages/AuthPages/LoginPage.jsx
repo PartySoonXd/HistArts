@@ -27,25 +27,28 @@ export const LoginPage = () => {
             })
         } catch (error) {
             setPushTitle("Error!")
-            setPushText("Uncorrect username or password!")
+            setPushText(error.response.data.message)
             setPushView(true)
-            setTimeout((() => {
-                setPushView(false)
-            }), 3500)
         }
-
+        
     }
-
+    
+    if (pushView) {
+        setTimeout((() => {
+            setPushView(false)
+        }), 3500)
+    }
     return (
         <>
         <PushNotification title={pushTitle} text={pushText} active={pushView}/>
-        <div className="container">
-            <form className="auth-form" onSubmit={e => loginHandler(e)}>
-                <input type="text" name="username" autoComplete="true" className="auth-form-input" placeholder="Username" onChange={e => setUsername(e.target.value)}/>
-                <input type="password" name="password"className="auth-form-input" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
-                <button type="submit" className="auth-form-btn">Login</button>
-            </form>
-        </div>
+            <div className="auth-form-wrapper">
+                <h1 className="auth-form-title">Login</h1>
+                <form className="auth-form" onSubmit={e => loginHandler(e)}>
+                    <input type="text" name="username" autoComplete="true" className="auth-form-input" placeholder="Username" onChange={e => setUsername(e.target.value)}/>
+                    <input type="password" name="password"className="auth-form-input" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+                    <button type="submit" className="auth-form-btn" disabled={!username || !password}>Login</button>
+                </form>
+            </div>
         </>
     )
 }
