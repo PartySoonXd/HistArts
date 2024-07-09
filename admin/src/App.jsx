@@ -6,11 +6,10 @@ import AdminPage from "./pages/AdminPage/AdminPage"
 import CreateFigurePage from "./pages/CreateFigurePage/CreateFigurePage"
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
 import logo from "./assets/images/Logo.png"
-import loginBtn from "./assets/images/login-btn.png"
 import logoutBtn from "./assets/images/logout-btn.png"
 import { EditFigurePage } from "./pages/EditFigurePage/EditFigurePage";
 import { Context } from "./context/Context";
-import {check} from "./http/userAPI"
+import {check, getUsersCount} from "./http/userAPI"
 import { logout } from "./http/userAPI";
 import { observer } from "mobx-react-lite";
 import { AuthProvider } from "./components/AuthProvider/AuthProvider";
@@ -23,6 +22,20 @@ const App = observer(() => {
   const [isLoading, setIsLoading] = useState(true)
 
   useLayoutEffect(() => {
+    const navigateToAuthPage = async () => {
+      const usersCount = await getUsersCount()
+
+      if (usersCount >= 1) {
+        history(LOGIN_ROUTE)    
+      } else {
+        history(REGISTER_ROUTE)
+      }
+
+    }
+    if (!localStorage.getItem("accessToken")) {
+      navigateToAuthPage()
+    }
+
     check().then(data => {
       if (data) {
         user.setUser(data)
@@ -50,36 +63,44 @@ const App = observer(() => {
     <div className="page">
       <div className="header">
         <div className="home-link">
-          <Link to={ADMIN_ROUTE}>
+          <Link to={user.isAuth && ADMIN_ROUTE}>
             <img src={logo}/>
           </Link>
         </div>
         <div className="login-logout-link">
-          {!user._isAuth ? <Link to={LOGIN_ROUTE}>
-            <img src={loginBtn}/>
-          </Link> :
-          <div className="logout-btn" onClick={logoutHandler}>
-            <img src={logoutBtn}/>
-          </div>}
+          {user.isAuth &&
+            <div className="logout-btn" onClick={logoutHandler}>
+              <img src={logoutBtn}/>
+            </div>
+          }
         </div>
       </div>
  
-         <Routes location={window.location} key={window.location.pathname}>
-          <Route path={ADMIN_ROUTE} element={
-            <AuthProvider isLoading={isLoading}>
-              <AdminPage/>
-            </AuthProvider>
-          }/>
-          <Route path={CREATE_FIGURE_ROUTE} element={
-            <AuthProvider isLoading={isLoading}>
-              <CreateFigurePage/>
-            </AuthProvider>
-          }/>
-          <Route path={EDIT_PAGE_ROUTE + "/:slug"} element={
-            <AuthProvider isLoading={isLoading}>
-              <EditFigurePage/>
-            </AuthProvider>
-          }/>
+        <Routes location={window.location} key={window.location.pathname}>
+          <Route 
+            path={ADMIN_ROUTE} 
+            element={
+              <AuthProvider isLoading={isLoading}>
+                <AdminPage/>
+              </AuthProvider>
+            }
+          />
+          <Route 
+            path={CREATE_FIGURE_ROUTE} 
+            element={
+              <AuthProvider isLoading={isLoading}>
+                <CreateFigurePage/>
+              </AuthProvider>
+            }
+          />
+          <Route 
+            path={EDIT_PAGE_ROUTE + "/:slug"} 
+            element={
+              <AuthProvider isLoading={isLoading}>
+                <EditFigurePage/>
+              </AuthProvider>
+            }
+          />
           <Route path={LOGIN_ROUTE} element={<LoginPage/>}/>
           <Route path={REGISTER_ROUTE} element={<RegisterPage/>}/>
           <Route path="/404" element={<NotFoundPage/>}/>
