@@ -21,6 +21,18 @@ export const login = async (username, password) => {
         throw error
     }
 }
+export const register = async (username, password) => {
+    try {
+        const user = await $adminHost.post('/api/user/register', {username, password}, options)
+        console.log(user)
+        localStorage.setItem('accessToken', user.data.accessToken)
+        const decode = jwt_decode(user.data.accessToken)
+    
+        return {decode, ...user.data}
+    } catch (error) {
+        throw error
+    }
+}
 
 export const check = async () => {
     try {
@@ -34,4 +46,10 @@ export const check = async () => {
 
 export const logout = async () => {
     return $authAdminHost.get('/api/user/logout', options)
+}
+
+export const getUsersCount = async () => {
+    const usersCount = await $adminHost.get('/api/user/get-users-count', options)
+
+    return usersCount.data
 }
