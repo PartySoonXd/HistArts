@@ -26,43 +26,43 @@ HistArts it is the website that has historical information about different creat
 1. Clone the project
 ```bash
 git clone https://github.com/PartySoonXd/HistArts.git
+```
 2. Go to the project directory
 ```bash
 cd HistArts
 ```
+3. Install dependencies
+```bash
+npm install
 ```
-3. Go to the server directory
+4. Go to the server directory
 ```bash
 cd server
 ```
-4. Install dependencies
+5. Install dependencies
 ```bash
 npm install
 ```
-5. Rename .env.example to .env.local
-6. Go to the client directory
+6. Rename .env.example to .env.local
+7. Go to the client directory
 ```bash
 cd client
 ```
-7. Install dependencies
+8. Install dependencies
 ```bash
 npm install
 ```
-8. Rename .env.example to .env.local
-9. Go to the admin directory
+9. Rename .env.example to .env.local
+10. Go to the admin directory
 ```bash
 cd admin
 ```
-10. Install dependencies
+11. Install dependencies
 ```bash
 npm install
 ```
 11. Rename .env.example to .env.local
-12. Install dependencies in root directory
-```bash
-npm install
-```
-13. Run app from root directory
+12. Run app from root directory
 ```bash
 npm run dev
 ```
