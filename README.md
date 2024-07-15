@@ -22,6 +22,7 @@ HistArts it is the website that has historical information about different creat
 - Axios
 ### Database 
 - PostgreSQL
+
 ## Run locally
 1. Clone the project
 ```bash
@@ -61,21 +62,51 @@ cd admin
 ```bash
 npm install
 ```
-11. Rename .env.example to .env.local
-12. Run app from root directory
+12. Rename .env.example to .env.local
+13. Run app from root directory
 ```bash
 npm run dev
 ```
+14. Go to the [configuration](#configuration)
+
 After this you can open apps in your browser
 - Client - http://localhost:8088
 - Admin - http://localhost:8800
+
 ## Run with docker
-1. Run docker-copmpose
+***You need to have docker on your computer***
+1. Go to the admin directory
+```bash
+cd admin
+```
+2. Rename .env.example to .env.local
+3. Go to the client directory
+```bash
+cd client
+```
+4. Rename .env.example to .env.local
+5. Go to the server directory
+```bash
+cd server
+``` 
+6. Rename .env.example to .env.local
+7. Run docker-compose from root directory
 ```bash
 docker-compose up
 ```
+8. Go to the [configuration](#configuration)
+
 After this you can open apps in your browser
 - Client - http://localhost:8088
 - Admin - http://localhost:8800
+
+## Configuration
+1. Open `server/.env.local` and complete required variables
+### Locally
+1. Install [postgreSQL](https://www.postgresql.org/download/) on your computer
+2. Create database with name(default: HistArts_DB) ***similar with value in `app/.env.local`***
+### With docker
+1. Open `server/.env.local` and change value of `DB_HOST` variable into `postgres`
+
 ## Feedback
 Vladislav Belomestnykh - vladislav.webdeveloper@gmail.com
