@@ -1,4 +1,7 @@
-<img alt="HistArts logo" src="https://raw.githubusercontent.com/PartySoonXd/HistArts/master/client/src/assets/images/Logo-dark.svg?token=GHSAT0AAAAAACUAU2JFHIC2WO62STCLRXNMZUXITWQ"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PartySoonXd/HistArts/master/client/src/assets/images/Logo.svg?token=GHSAT0AAAAAACUAU2JFWLKR3AS725RF44FMZUXIVUA">
+  <img alt="HistArts logo" src="https://raw.githubusercontent.com/PartySoonXd/HistArts/master/client/src/assets/images/Logo-dark.svg?token=GHSAT0AAAAAACUAU2JFHIC2WO62STCLRXNMZUXITWQ"/>
+</picture>
 
 ## Description
 HistArts it is the website that has historical information about different creative people. Here you can find information about musicians, artists, sculptors and poets. This website is created for people who want to meet with art or already in love with one. This project was created to improve my skills to work with **react**, **LESS**, **express**, **PostgreSQL**, **RESTful API** and **JWT authorization**.
