@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PartySoonXd/HistArts/master/client/src/assets/images/Logo.svg?token=GHSAT0AAAAAACUAU2JFWLKR3AS725RF44FMZUXIVUA">
-  <img alt="HistArts logo" src="https://raw.githubusercontent.com/PartySoonXd/HistArts/master/client/src/assets/images/Logo-dark.svg?token=GHSAT0AAAAAACUAU2JFHIC2WO62STCLRXNMZUXITWQ"/>
+  <source media="(prefers-color-scheme: dark)" srcset="/client/src/assets/images/Logo.svg">
+  <img alt="HistArts logo" src="/client/src/assets/images/Logo-dark.svg"/>
 </picture>
 
 ## Description
