@@ -62,11 +62,11 @@ cd admin
 npm install
 ```
 12. Rename .env.example to .env.local
-13. Run app from root directory
+13. Go to the [configuration](#configuration)
+14. Run app from root directory
 ```bash
 npm run dev
 ```
-14. Go to the [configuration](#configuration)
 
 After this you can open apps in your browser
 - Client - http://localhost:8088
