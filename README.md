@@ -103,7 +103,8 @@ After this you can open apps in your browser
 1. Open `server/.env.local` and complete required variables
 ### Locally
 1. Install [postgreSQL](https://www.postgresql.org/download/) on your computer
-2. Create database with name(default: HistArts_DB) ***similar with value in `app/.env.local`***
+    - In process of installation you need to set password(default: root) ***similar with values in `server/.env.local`***
+2. Create database with name(default: HistArts_DB) ***similar with value in `server/.env.local`***
 ### With docker
 1. Open `server/.env.local` and change value of `DB_HOST` variable into `postgres`
 
