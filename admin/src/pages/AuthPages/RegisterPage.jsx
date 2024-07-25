@@ -4,7 +4,7 @@ import { PushNotification } from "../../components/PushNotification/PushNotifica
 import { register } from "../../http/userAPI";
 import { Context } from "../../context/Context";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_ROUTE } from "../../utils/consts";
+import { LOGIN_ROUTE, ADMIN_ROUTE } from "../../utils/consts";
 
 export const RegisterPage = () => {
     const {user} = useContext(Context)
@@ -34,10 +34,10 @@ export const RegisterPage = () => {
                 history(ADMIN_ROUTE)
             })
         } catch (error) {
-            setPushText(error.response.data.message)
+            setPushText(error.response?.data?.message)
             setPushTitle("Error!")
             setPushView(true)
-            if (error.response.status == 400) {
+            if (error.response?.status == 400) {
                 setTimeout(() => {
                     history(LOGIN_ROUTE)
                 }, 3500)
