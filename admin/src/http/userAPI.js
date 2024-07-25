@@ -24,7 +24,6 @@ export const login = async (username, password) => {
 export const register = async (username, password) => {
     try {
         const user = await $adminHost.post('/api/user/register', {username, password}, options)
-        console.log(user)
         localStorage.setItem('accessToken', user.data.accessToken)
         const decode = jwt_decode(user.data.accessToken)
     
@@ -40,7 +39,7 @@ export const check = async () => {
         localStorage.setItem('accessToken', user.data.accessToken)
         return jwt_decode(user.data.accessToken)
     } catch (error) {
-        return
+        return error
     }
 }
 
