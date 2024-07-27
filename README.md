@@ -35,35 +35,15 @@ cd HistArts
 ```bash
 npm install
 ```
-4. Go to the server directory
+4. Install dependencies for applications
 ```bash
-cd server
+npm run deps
 ```
-5. Install dependencies
-```bash
-npm install
-```
-6. Rename .env.example to .env.local
-7. Go to the client directory
-```bash
-cd client
-```
-8. Install dependencies
-```bash
-npm install
-```
-9. Rename .env.example to .env.local
-10. Go to the admin directory
-```bash
-cd admin
-```
-11. Install dependencies
-```bash
-npm install
-```
-12. Rename .env.example to .env.local
-13. Go to the [configuration](#configuration)
-14. Run app from root directory
+5. Go to the `server` directory and rename **.env.example** to **.env.local**
+6. Go to the `client` directory and rename **.env.example** to **.env.local**
+7. Go to the `admin` directory and rename **.env.example** to **.env.local**
+8. Go to the [configuration](#configuration)
+9. Run app from root directory
 ```bash
 npm run dev
 ```
@@ -78,9 +58,9 @@ After this you can open apps in your browser
 ```bash
 git clone https://github.com/PartySoonXd/HistArts.git
 ```
-2. Go to the admin directory and rename **.env.example** to **.env.local**
-3. Go to the client directory and rename **.env.example** to **.env.local**
-4. Go to the server directory and rename **.env.example** to **.env.local**
+2. Go to the `admin` directory and rename **.env.example** to **.env.local**
+3. Go to the `client` directory and rename **.env.example** to **.env.local**
+4. Go to the `server` directory and rename **.env.example** to **.env.local**
 5. Go to the [configuration](#configuration)
 6. Run docker-compose from root directory
 ```bash
