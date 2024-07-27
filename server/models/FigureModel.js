@@ -106,11 +106,3 @@ module.exports = {
     Gallery,
     GalleryItem,
 }
-// module.exports = Figure,
-// module.exports = FigureInfo,
-// module.exports = Header,
-// module.exports = About,
-// module.exports = History,
-// module.exports = HistoryItem,
-// module.exports = Gallery,
-// module.exports = GalleryItem

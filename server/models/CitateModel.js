@@ -9,15 +9,4 @@ const Citate = db.define('citates', {
     timestamps: false
 })
 
-// class Citate extends Model {}
-// Citate.init({
-//     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-//     text: {type: DataTypes.STRING},
-//     author: {type: DataTypes.STRING},
-//   }, {
-//     timestamps: false,
-//     db, // We need to pass the connection instance
-//     modelName: 'User' // We need to choose the model name
-//   });
-
 module.exports = Citate
