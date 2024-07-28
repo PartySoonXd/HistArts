@@ -38,7 +38,7 @@ services:
     build: /server
     ports:
       - 3001:3001
-    command: yarn db & yarn server
+    command: yarn server
     depends_on:
       - postgres
     restart: on-failure
