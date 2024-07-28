@@ -14,11 +14,10 @@ const sequelize = new Sequelize(
 const dbInit = async() => {
     await sequelize.query(`CREATE DATABASE "${process.env.POSTGRES_NAME}"`).then(() => {
         console.log("database successfully initiated!")
-        process.exit()
     }).catch(error => {
-        console.log(error)
-        process.exit()
+        console.log(error.message)
+        return error
     })
 }
-
 dbInit()
+process.exit()

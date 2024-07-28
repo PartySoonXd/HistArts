@@ -4,5 +4,5 @@ EXPOSE 3001
 COPY package.json .
 RUN npm install
 COPY . .
-RUN yarn db
+
 CMD [ "yarn", "server" ]
