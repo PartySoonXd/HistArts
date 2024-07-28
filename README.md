@@ -35,35 +35,15 @@ cd HistArts
 ```bash
 npm install
 ```
-4. Go to the server directory
+4. Install dependencies for applications
 ```bash
-cd server
+npm run deps
 ```
-5. Install dependencies
-```bash
-npm install
-```
-6. Rename .env.example to .env.local
-7. Go to the client directory
-```bash
-cd client
-```
-8. Install dependencies
-```bash
-npm install
-```
-9. Rename .env.example to .env.local
-10. Go to the admin directory
-```bash
-cd admin
-```
-11. Install dependencies
-```bash
-npm install
-```
-12. Rename .env.example to .env.local
-13. Go to the [configuration](#configuration)
-14. Run app from root directory
+5. Go to the `server` directory and rename **.env.example** to **.env.local**
+6. Go to the `client` directory and rename **.env.example** to **.env.local**
+7. Go to the `admin` directory and rename **.env.example** to **.env.local**
+8. Go to the [configuration](#configuration)
+9. Run app from root directory
 ```bash
 npm run dev
 ```
@@ -74,26 +54,18 @@ After this you can open apps in your browser
 
 ## Run with docker
 ***You need to have docker on your computer***
-1. Go to the admin directory
+1. Clone the project
 ```bash
-cd admin
+git clone https://github.com/PartySoonXd/HistArts.git
 ```
-2. Rename .env.example to .env.local
-3. Go to the client directory
-```bash
-cd client
-```
-4. Rename .env.example to .env.local
-5. Go to the server directory
-```bash
-cd server
-``` 
-6. Rename .env.example to .env.local
-7. Run docker-compose from root directory
+2. Go to the `admin` directory and rename **.env.example** to **.env.local**
+3. Go to the `client` directory and rename **.env.example** to **.env.local**
+4. Go to the `server` directory and rename **.env.example** to **.env.local**
+5. Go to the [configuration](#configuration)
+6. Run docker-compose from root directory
 ```bash
 docker-compose up
 ```
-8. Go to the [configuration](#configuration)
 
 After this you can open apps in your browser
 - Client - http://localhost:8088
@@ -104,9 +76,12 @@ After this you can open apps in your browser
 ### Locally
 1. Install [postgreSQL](https://www.postgresql.org/download/) on your computer
     - In process of installation you need to set password(default: root) ***similar with values in `server/.env.local`***
-2. Create database with name(default: HistArts_DB) ***similar with value in `server/.env.local`***
+2. Init db from root directory
+```bash
+npm run db
+```
 ### With docker
-1. Open `server/.env.local` and change value of `DB_HOST` variable into `postgres`
+1. Open `server/.env.local` and change value of `POSTGRES_HOST` variable into `postgres`
 
 ## Feedback
 Vladislav Belomestnykh - vladislav.webdeveloper@gmail.com
