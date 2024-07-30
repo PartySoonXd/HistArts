@@ -331,7 +331,7 @@ export const FigureForm = (props) => {
                     </select>
                 </div>
                 <div className="figure-intro-fields">
-                    <input type="text" name="headerName" className={`text-field ${isError && errors['headerName']}`} placeholder="Intro text"/>
+                    <input type="text" maxLength={25} name="headerName" className={`text-field ${isError && errors['headerName']}`} placeholder="Intro text"/>
                     <label htmlFor="intro-img" className="mini-portrait-label">
                         <div className={`empty-preview intro-preview ${isError && errors['introImg']}`}>
                             {introImgLoading && <LoadingSpinner/>}
@@ -372,12 +372,12 @@ export const FigureForm = (props) => {
                 <h2 className="figure-form-title">Personal info</h2>
                 <div className="personal-info-fields">
                     <div className="figure-name">
-                        <input type="text" name="firstName"  className={`text-field ${isError && errors['firstName']}`} placeholder="First name"/>
-                        <input type="text" name="secondName" className={`text-field ${isError && errors['secondName']}`} placeholder="Second name"/>
+                        <input type="text" name="firstName" maxLength={40}  className={`text-field ${isError && errors['firstName']}`} placeholder="First name"/>
+                        <input type="text" name="secondName" maxLength={40} className={`text-field ${isError && errors['secondName']}`} placeholder="Second name"/>
                     </div>
                     <div className="figure-years">
-                        <input type="text" name="birthYear" className={`text-field ${isError && errors['birthYear']}`} placeholder="Birth year"/>
-                        <input type="text" name="deathYear" className={`text-field ${isError && errors['deathYear']}`} placeholder="Death year"/>
+                        <input type="text" name="birthYear" maxLength={5} className={`text-field ${isError && errors['birthYear']}`} placeholder="Birth year"/>
+                        <input type="text" name="deathYear" maxLength={5} className={`text-field ${isError && errors['deathYear']}`} placeholder="Death year"/>
                     </div>
                 </div>
             </div>
