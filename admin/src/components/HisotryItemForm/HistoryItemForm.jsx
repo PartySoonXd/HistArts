@@ -8,6 +8,7 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadinSpinner";
 import uploadIcon from "../../assets/images/upload.png"
 import deleteBtn from "../../assets/images/delete-btn.png"
 import { TypeSelector } from "../TypeSelector/TypeSelector";
+import { HistoryItemFields } from "./HistoryItemFields";
 
 export const HistoryItemForm = ({item, errors, changeItem, deleteItem, slug, fetchFile}) => {
     useEffect(() => {
@@ -99,43 +100,7 @@ export const HistoryItemForm = ({item, errors, changeItem, deleteItem, slug, fet
                     className="invisible-field"
                     accept="image/jpeg,image/png"
                 />
-                <div className="history-item-fields">
-                    <input 
-                        type="text" 
-                        value={item.name}
-                        name={`${item.number}-name`}
-                        onChange={e => changeItem("name", e.target.value, item.number)}
-                        className={`text-field ${errors && errors[`${item.number}-name`]}`} 
-                        placeholder="Paint name"
-                    />
-                    <div className="history-item-fields-years">
-                        <input 
-                            type="text"
-                            value={item.from}
-                            name={`${item.number}-from`}
-                            onChange={e => changeItem("from", e.target.value, item.number)}
-                            className={`text-field year-field ${errors && errors[`${item.number}-from`]}`} 
-                            placeholder="From"
-                        />
-                        <span className="line"></span>
-                        <input 
-                            type="text" 
-                            value={item.to}
-                            name={`${item.number}-to`}
-                            onChange={e => changeItem("to", e.target.value, item.number)}
-                            className={`text-field year-field ${errors && errors[`${item.number}-to`]}`} 
-                            placeholder="To"
-                        />
-                    </div>
-                    <textarea 
-                        value={item.description}
-                        name={`${item.number}-description`}
-                        onChange={e => changeItem("description", e.target.value, item.number)}
-                        maxLength="4000" 
-                        placeholder="About text" 
-                        className={`textarea-field  ${errors && errors[`${item.number}-description`]}`}
-                    />
-                </div>
+                <HistoryItemFields item={item} errors={errors} changeItem={changeItem}/>
             </>}
             {fileType === "audio" && <>
             {preview ? 
@@ -155,48 +120,12 @@ export const HistoryItemForm = ({item, errors, changeItem, deleteItem, slug, fet
                     className="invisible-field"
                     accept="audio/*"
                 />
-                <div className="history-item-fields">
-                    <input 
-                        type="text" 
-                        value={item.name}
-                        name={`${item.number}-name`}
-                        onChange={e => changeItem("name", e.target.value, item.number)}
-                        className={`text-field ${errors && errors[`${item.number}-name`]}`} 
-                        placeholder="Paint name"
-                    />
-                    <div className="history-item-fields-years">
-                        <input 
-                            type="text"
-                            value={item.from}
-                            name={`${item.number}-from`}
-                            onChange={e => changeItem("from", e.target.value, item.number)}
-                            className={`text-field year-field ${errors && errors[`${item.number}-from`]}`} 
-                            placeholder="From"
-                        />
-                        <span className="line"></span>
-                        <input 
-                            type="text" 
-                            value={item.to}
-                            name={`${item.number}-to`}
-                            onChange={e => changeItem("to", e.target.value, item.number)}
-                            className={`text-field year-field ${errors && errors[`${item.number}-to`]}`} 
-                            placeholder="To"
-                        />
-                    </div>
-                    <textarea 
-                        value={item.description}
-                        name={`${item.number}-description`}
-                        onChange={e => changeItem("description", e.target.value, item.number)}
-                        maxLength="4000" 
-                        placeholder="About text" 
-                        className={`textarea-field  ${errors && errors[`${item.number}-description`]}`}
-                    />
-                </div>
+                <HistoryItemFields item={item} errors={errors} changeItem={changeItem}/>
             </>}
             {fileType === "text" && <>
                 <textarea
                     type='text' 
-                    maxLength="1500"
+                    maxLength={1500}
                     value={item.file}
                     name={`${item.number}-text`}
                     onChange={e => changeItem('file', e.target.value, item.number)}
@@ -204,43 +133,7 @@ export const HistoryItemForm = ({item, errors, changeItem, deleteItem, slug, fet
                     className={`textarea-field history-item ${errors && errors[`${item.number}-text`]}`} 
                     placeholder="Piece of poetry"
                 />
-                <div className="history-item-fields">
-                    <input 
-                        type="text" 
-                        value={item.name}
-                        name={`${item.number}-name`}
-                        onChange={e => changeItem("name", e.target.value, item.number)}
-                        className={`text-field ${errors && errors[`${item.number}-name`]}`} 
-                        placeholder="Paint name"
-                    />
-                    <div className="history-item-fields-years">
-                        <input 
-                            type="text"
-                            value={item.from}
-                            name={`${item.number}-from`}
-                            onChange={e => changeItem("from", e.target.value, item.number)}
-                            className={`text-field year-field ${errors && errors[`${item.number}-from`]}`} 
-                            placeholder="From"
-                        />
-                        <span className="line"></span>
-                        <input 
-                            type="text" 
-                            value={item.to}
-                            name={`${item.number}-to`}
-                            onChange={e => changeItem("to", e.target.value, item.number)}
-                            className={`text-field year-field ${errors && errors[`${item.number}-to`]}`} 
-                            placeholder="To"
-                        />
-                    </div>
-                    <textarea 
-                        value={item.description}
-                        name={`${item.number}-description`}
-                        onChange={e => changeItem("description", e.target.value, item.number)}
-                        maxLength="4000" 
-                        placeholder="About text" 
-                        className={`textarea-field  ${errors && errors[`${item.number}-description`]}`}
-                    />
-                </div>
+                <HistoryItemFields item={item} errors={errors} changeItem={changeItem}/>
             </>}
         </div>
         </>
