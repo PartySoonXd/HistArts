@@ -3,21 +3,26 @@ const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
     "postgres",
-    process.env.POSTGRES_USER,
+    "postgres",
     process.env.POSTGRES_PASSWORD,
     {
         host: process.env.POSTGRES_HOST,
-        dialect: 'postgres',
+        dialect: "postgres",
     }
 )
 
-const dbInit = async() => {
-    await sequelize.query(`CREATE DATABASE "${process.env.POSTGRES_NAME}"`).then(() => {
-        console.log("database successfully initiated!")
-    }).catch(error => {
+const postgresInit = async() => {
+    try {
+        await sequelize.query(`CREATE USER "${process.env.POSTGRES_USER}" WITH PASSWORD '${process.env.POSTGRES_PASSWORD}' SUPERUSER`).then(data => {
+            console.log("user created")
+        })
+        await sequelize.query(`CREATE DATABASE "${process.env.POSTGRES_NAME}"`).then(() => {
+            console.log("database successfully initiated!")
+            process.exit()
+        })
+    } catch (error) {
         console.log(error.message)
-        return error
-    })
+        process.exit()
+    }
 }
-dbInit()
-process.exit()
+postgresInit()
