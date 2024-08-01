@@ -442,7 +442,7 @@ export const FigureForm = (props) => {
                     <div className="add-btn" onClick={addHistoryItem}></div>
                 </div>
             </div>
-            <button type="submit" className="figure-form-btn" disabled={isLoading}>PUBLICATE</button>
+            <button type="submit" className="figure-form-btn" disabled={isLoading}>PUBLISH</button>
         </form>
         </>
     )
