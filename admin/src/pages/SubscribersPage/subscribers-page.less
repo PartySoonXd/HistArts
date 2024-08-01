@@ -1,0 +1,33 @@
+.subscribers-page {
+    &-title {
+        color: @white;
+        font-size: 54px;
+        margin-top: 25px;       
+    }
+    &-list {
+        margin-top: 30px;
+        color: @white;
+    }
+}
+.subscriber-item {
+    padding: 15px;
+    border: 2px solid @white;
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    &__email {
+        font-size: 24px;
+    }
+    &-delete-btn {
+        margin: 0;
+        appearance: none;
+        background: transparent;
+        border: none;
+        img {
+            width: 50px;
+        }
+    }
+}
