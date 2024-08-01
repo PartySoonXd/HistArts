@@ -1,20 +1,21 @@
 import React, {useLayoutEffect, useContext, useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
-import { ADMIN_ROUTE, CREATE_FIGURE_ROUTE, EDIT_PAGE_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "./utils/consts";
-import AdminPage from "./pages/AdminPage/AdminPage"
-import CreateFigurePage from "./pages/CreateFigurePage/CreateFigurePage"
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
-import logo from "./assets/images/Logo.png"
-import logoutBtn from "./assets/images/logout-btn.png"
-import { EditFigurePage } from "./pages/EditFigurePage/EditFigurePage";
+import { HOME_ROUTE, CREATE_FIGURE_ROUTE, EDIT_PAGE_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, FIGURES_ROUTE, CITATES_ROUTE, SUBSCRIBERS_ROUTE } from "./utils/consts";
 import { Context } from "./context/Context";
 import {check, getUsersCount} from "./http/userAPI"
-import { logout } from "./http/userAPI";
-import { observer } from "mobx-react-lite";
+import { Header } from "./components/Header/Header";
+import CreateFigurePage from "./pages/CreateFigurePage/CreateFigurePage"
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
+import { EditFigurePage } from "./pages/EditFigurePage/EditFigurePage";
 import { AuthProvider } from "./components/AuthProvider/AuthProvider";
 import { LoginPage } from "./pages/AuthPages/LoginPage";
 import { RegisterPage } from "./pages/AuthPages/RegisterPage";
+import HomePage from "./pages/HomePage/HomePage";
+import { FiguresPage } from "./pages/FiguresPage/FiguresPage";
+import { CitatesPage } from "./pages/CitatesPage/CitatesPage";
+import { SubscribersPage } from "./pages/SubscribersPage/SubscribersPage";
 
 const App = observer(() => {
   const {user} = useContext(Context)
@@ -46,42 +47,41 @@ const App = observer(() => {
     })
   }, [])
 
-  const logoutHandler = async () => {
-    try {
-      await logout().then(() => {
-        user.setUser(undefined)
-        user.setIsAuth(false)
-        localStorage.clear()
-        history(LOGIN_ROUTE)
-      })
-    } catch (error) {
-      window.location.reload()
-    }
-  }
+  
 
   return (
     <div className="page">
-      <div className="header">
-        <div className="home-link">
-          <Link to={user.isAuth && ADMIN_ROUTE}>
-            <img src={logo}/>
-          </Link>
-        </div>
-        <div className="login-logout-link">
-          {user.isAuth &&
-            <div className="logout-btn" onClick={logoutHandler}>
-              <img src={logoutBtn}/>
-            </div>
-          }
-        </div>
-      </div>
- 
+        <Header/>
         <Routes location={window.location} key={window.location.pathname}>
           <Route 
-            path={ADMIN_ROUTE} 
+            path={HOME_ROUTE} 
             element={
               <AuthProvider isLoading={isLoading}>
-                <AdminPage/>
+                <HomePage/>
+              </AuthProvider>
+            }
+          />
+          <Route 
+            path={FIGURES_ROUTE} 
+            element={
+              <AuthProvider isLoading={isLoading}>
+                <FiguresPage/>
+              </AuthProvider>
+            }
+          />
+          <Route 
+            path={CITATES_ROUTE} 
+            element={
+              <AuthProvider isLoading={isLoading}>
+                <CitatesPage/>
+              </AuthProvider>
+            }
+          />
+          <Route 
+            path={SUBSCRIBERS_ROUTE} 
+            element={
+              <AuthProvider isLoading={isLoading}>
+                <SubscribersPage/>
               </AuthProvider>
             }
           />
