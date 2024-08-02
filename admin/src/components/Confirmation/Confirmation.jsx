@@ -2,6 +2,7 @@ import React from "react";
 
 import { deleteById } from "../../http/figureAPI";
 import { unsubscribe } from "../../http/subscriberAPI";
+import { deleteCitate } from "../../http/citateAPI";
 
 const Confirmation = ({setIsConfirmationShown, value, id}) => {
     const confirmHandler = async () => {
@@ -12,6 +13,11 @@ const Confirmation = ({setIsConfirmationShown, value, id}) => {
         }
         if (value === "delete-subscriber") {
             await unsubscribe(id).then(() => {
+                window.location.reload()
+            })
+        }
+        if (value === "delete-citate") {
+            await deleteCitate(id).then(() => {
                 window.location.reload()
             })
         }
