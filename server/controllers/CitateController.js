@@ -4,7 +4,6 @@ class CitateController {
     async create(req, res, next) {
         try {
             const {text, author} = req.body
-            console.log(req.body)
             const citateData = await CitateService.create(text, author)
             return res.json(citateData) 
         } catch (error) {
