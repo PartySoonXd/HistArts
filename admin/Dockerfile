@@ -1,19 +1,4 @@
-# FROM node:20-alpine3.17 as build
-# WORKDIR /app/admin
-# COPY package.json .
-# RUN npm install
-# COPY . .
-# RUN yarn build
-
-# FROM nginx:latest
-# COPY --from=build /app/admin/build /usr/share/nginx/html/ 
-# COPY --from=build /app/admin/nginx.conf /etc/nginx/conf.d/nginx.conf
-# CMD ["nginx", "-g", "daemon off;"]
-# syntax=docker/dockerfile:1
-
-ARG NODE_VERSION=20.14.0
-
-FROM node:${NODE_VERSION}-alpine as base
+FROM node:20.14.0-alpine as base
 
 WORKDIR /app/admin
 
@@ -51,7 +36,8 @@ COPY --from=build /app/admin/build ./dist
 
 FROM nginx:latest
 COPY --from=final /app/admin/dist /usr/share/nginx/html/ 
-COPY --from=final /app/admin/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY --from=final /app/admin/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 8800
 
 CMD ["nginx", "-g", "daemon off;"]
 
