@@ -6,6 +6,7 @@ import { createFigure } from "../../http/figureAPI";
 import { FigureForm } from "../../components/FigureForm/FigureForm";
 import { observer } from "mobx-react-lite";
 import { PushNotification } from "../../components/PushNotification/PushNotification";
+import { Header } from "../../components/Header/Header";
 
 const files = {}
 const CreateFigurePage = () => {
@@ -29,6 +30,7 @@ const CreateFigurePage = () => {
     }
     return (
         <>
+        <Header/>
         <PushNotification title={pushTitle} text={pushText} active={pushView}/>
         <main className="content">
             <div className="container">

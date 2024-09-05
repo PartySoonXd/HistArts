@@ -6,6 +6,7 @@ import { FigureForm } from "../../components/FigureForm/FigureForm";
 import { update } from "../../http/figureAPI";
 import { FIGURES_ROUTE, NOT_FOUND_ROUTE } from "../../utils/consts"
 import { observer } from "mobx-react-lite";
+import { Header } from "../../components/Header/Header";
 
 const files = {}
 
@@ -39,10 +40,13 @@ export const EditFigurePage = observer(() => {
         }
     }
     return (
+        <>
+        <Header/>
         <main className="content">
-        <div className="container">
-            <FigureForm onSubmit={updateFigureHandler} figure={figure} slug={slug} files={files}/>
-        </div>
-    </main>
+            <div className="container">
+                <FigureForm onSubmit={updateFigureHandler} figure={figure} slug={slug} files={files}/>
+            </div>
+        </main>
+        </>
     )
 })

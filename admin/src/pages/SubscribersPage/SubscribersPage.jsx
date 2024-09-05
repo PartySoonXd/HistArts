@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import deleteIcon from "../../assets/images/delete-btn.png"
 import { getSubscribers } from "../../http/subscriberAPI";
 import Confirmation from "../../components/Confirmation/Confirmation";
+import { Header } from "../../components/Header/Header";
 
 export const SubscribersPage = () => {
     const [subscribers, setSubscribers] = useState()
@@ -31,6 +32,7 @@ export const SubscribersPage = () => {
     }
     return (
         <>
+        <Header/>
         {isConfirmationShown && 
         <Confirmation 
             setIsConfirmationShown={setIsConfirmationShown} 

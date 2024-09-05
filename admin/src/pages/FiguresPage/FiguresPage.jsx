@@ -7,6 +7,7 @@ import deleteIcon from "../../assets/images/delete-btn.png"
 import { CREATE_FIGURE_ROUTE, EDIT_PAGE_ROUTE } from "../../utils/consts";
 import { getFigures } from "../../http/figureAPI";
 import Confirmation from "../../components/Confirmation/Confirmation";
+import { Header } from "../../components/Header/Header";
 
 export const FiguresPage = () => {
     const [figures, setFigures] = useState()
@@ -38,6 +39,7 @@ export const FiguresPage = () => {
     }
     return (
         <>
+        <Header/>
         {isConfirmationShown && 
             <Confirmation 
                 setIsConfirmationShown={setIsConfirmationShown} 

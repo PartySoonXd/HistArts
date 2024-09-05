@@ -4,7 +4,7 @@ import { PushNotification } from "../../components/PushNotification/PushNotifica
 import { register } from "../../http/userAPI";
 import { Context } from "../../context/Context";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_ROUTE, ADMIN_ROUTE } from "../../utils/consts";
+import { LOGIN_ROUTE, HOME_ROUTE } from "../../utils/consts";
 
 export const RegisterPage = () => {
     const {user} = useContext(Context)
@@ -31,7 +31,7 @@ export const RegisterPage = () => {
             await register(data.username, data.password).then(data => {
                 user.setUser(data)
                 user.setIsAuth(true)
-                history(ADMIN_ROUTE)
+                history(HOME_ROUTE)
             })
         } catch (error) {
             setPushText(error.response?.data?.message)

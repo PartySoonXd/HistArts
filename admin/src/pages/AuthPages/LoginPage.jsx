@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { login } from "../../http/userAPI";
 import {Context} from "../../context/Context"
 import { useNavigate } from "react-router-dom";
-import { ADMIN_ROUTE } from "../../utils/consts";
+import { HOME_ROUTE } from "../../utils/consts";
 import { PushNotification } from "../../components/PushNotification/PushNotification";
 
 export const LoginPage = () => {
@@ -23,7 +23,7 @@ export const LoginPage = () => {
             await login(username, password).then(data => {
                 user.setUser(data)
                 user.setIsAuth(true)
-                history(ADMIN_ROUTE)
+                history(HOME_ROUTE)
             })
         } catch (error) {
             setPushTitle("Error!")

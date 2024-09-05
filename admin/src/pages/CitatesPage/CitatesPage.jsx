@@ -5,6 +5,7 @@ import deleteIcon from "../../assets/images/delete-btn.png"
 import editIcon from "../../assets/images/edit-btn.png"
 import { CitateFormModal } from "../../components/CitateFormModal/CitateFormModal";
 import Confirmation from "../../components/Confirmation/Confirmation";
+import { Header } from "../../components/Header/Header";
 
 export const CitatesPage = () => {
     const [citates, setCitates] = useState()
@@ -43,6 +44,7 @@ export const CitatesPage = () => {
     
     return (
         <>
+        <Header/>
         {isConfirmationShown && 
         <Confirmation 
             setIsConfirmationShown={setIsConfirmationShown} 

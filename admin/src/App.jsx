@@ -5,7 +5,6 @@ import { observer } from "mobx-react-lite";
 import { HOME_ROUTE, CREATE_FIGURE_ROUTE, EDIT_PAGE_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, FIGURES_ROUTE, CITATES_ROUTE, SUBSCRIBERS_ROUTE } from "./utils/consts";
 import { Context } from "./context/Context";
 import {check, getUsersCount} from "./http/userAPI"
-import { Header } from "./components/Header/Header";
 import CreateFigurePage from "./pages/CreateFigurePage/CreateFigurePage"
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
 import { EditFigurePage } from "./pages/EditFigurePage/EditFigurePage";
@@ -51,61 +50,60 @@ const App = observer(() => {
 
   return (
     <div className="page">
-        <Header/>
-        <Routes location={window.location} key={window.location.pathname}>
-          <Route 
-            path={HOME_ROUTE} 
-            element={
-              <AuthProvider isLoading={isLoading}>
-                <HomePage/>
-              </AuthProvider>
-            }
-          />
-          <Route 
-            path={FIGURES_ROUTE} 
-            element={
-              <AuthProvider isLoading={isLoading}>
-                <FiguresPage/>
-              </AuthProvider>
-            }
-          />
-          <Route 
-            path={CITATES_ROUTE} 
-            element={
-              <AuthProvider isLoading={isLoading}>
-                <CitatesPage/>
-              </AuthProvider>
-            }
-          />
-          <Route 
-            path={SUBSCRIBERS_ROUTE} 
-            element={
-              <AuthProvider isLoading={isLoading}>
-                <SubscribersPage/>
-              </AuthProvider>
-            }
-          />
-          <Route 
-            path={CREATE_FIGURE_ROUTE} 
-            element={
-              <AuthProvider isLoading={isLoading}>
-                <CreateFigurePage/>
-              </AuthProvider>
-            }
-          />
-          <Route 
-            path={EDIT_PAGE_ROUTE + "/:slug"} 
-            element={
-              <AuthProvider isLoading={isLoading}>
-                <EditFigurePage/>
-              </AuthProvider>
-            }
-          />
-          <Route path={LOGIN_ROUTE} element={<LoginPage/>}/>
-          <Route path={REGISTER_ROUTE} element={<RegisterPage/>}/>
-          <Route path="/404" element={<NotFoundPage/>}/>
-          <Route path="/*" element={<NotFoundPage/>}/>
-        </Routes> 
+      <Routes location={window.location} key={window.location.pathname}>
+        <Route 
+          path={HOME_ROUTE} 
+          element={
+            <AuthProvider isLoading={isLoading}>
+              <HomePage/>
+            </AuthProvider>
+          }
+        />
+        <Route 
+          path={FIGURES_ROUTE} 
+          element={
+            <AuthProvider isLoading={isLoading}>
+              <FiguresPage/>
+            </AuthProvider>
+          }
+        />
+        <Route 
+          path={CITATES_ROUTE} 
+          element={
+            <AuthProvider isLoading={isLoading}>
+              <CitatesPage/>
+            </AuthProvider>
+          }
+        />
+        <Route 
+          path={SUBSCRIBERS_ROUTE} 
+          element={
+            <AuthProvider isLoading={isLoading}>
+              <SubscribersPage/>
+            </AuthProvider>
+          }
+        />
+        <Route 
+          path={CREATE_FIGURE_ROUTE} 
+          element={
+            <AuthProvider isLoading={isLoading}>
+              <CreateFigurePage/>
+            </AuthProvider>
+          }
+        />
+        <Route 
+          path={EDIT_PAGE_ROUTE + "/:slug"} 
+          element={
+            <AuthProvider isLoading={isLoading}>
+              <EditFigurePage/>
+            </AuthProvider>
+          }
+        />
+        <Route path={LOGIN_ROUTE} element={<LoginPage/>}/>
+        <Route path={REGISTER_ROUTE} element={<RegisterPage/>}/>
+        <Route path="/404" element={<NotFoundPage/>}/>
+        <Route path="/*" element={<NotFoundPage/>}/>
+      </Routes> 
     </div>
   )
 })
