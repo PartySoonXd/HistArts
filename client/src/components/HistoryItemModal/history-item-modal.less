@@ -61,6 +61,8 @@
         }
     }
     &-container {
+        display: flex;
+        flex-direction: column;
         position: fixed;
         max-width: 2000px;
         width: 60%;
@@ -77,7 +79,7 @@
         text-transform: uppercase;
         letter-spacing: .05em;
         text-align: center;
-        width: 95%;
+        width: 80%;
         margin: 0 auto;
     }
     &-years {
@@ -136,20 +138,23 @@
 .m-media({
     .history-item-modal {
         &-container {
-            width: 80%;
+            width: 95%;
             padding: 30px;
         }
         &-title {
             font-size: 40px
         }
-        &-content { 
+        &-content {
+            display: flex;
+            flex-direction: column;
             padding-right: 5px;
             &::-webkit-scrollbar {
                 width: 2px;
             }
             &__img {
+                align-self: center;
                 max-width: 100%;
-                margin: 0 0 20px 0;
+                margin: 0 0 15px 0;
             }
         }
     }
@@ -157,10 +162,7 @@
 
 .s-media({
     .modal-btn {
-        margin: auto 0 40px auto;
-        &.right-side {
-            margin: auto 0 40px auto;
-        }
+        margin: 10px 0 40px auto;
         &__arrow {
             &.dark-arrow {
                 content: url(../../assets/images/dark-arrow.svg)
@@ -175,16 +177,17 @@
             font-size: 24px;
         }
         &-container {
-            padding: 20px;
+            padding: 30px;
         }
+        
     }
 });
 
 .xs-media({
     .history-item-modal {
         &-close-btn {
-            top: 10px;
-            right: 10px;
+            top: 0px;
+            right: 0px;
         }
         &-years {
             font-size: 20px;
@@ -193,12 +196,12 @@
         &-title {
             max-width: 80%;
             text-align: center;
-            padding-top: 30px;
+            padding-top: 40px;
             font-size: 24px;
             margin: 0 auto;
         }
         &-container {
-            width: 90%;
+            padding: 15px;
         }
         .audio-item-modal {
             margin: 0;

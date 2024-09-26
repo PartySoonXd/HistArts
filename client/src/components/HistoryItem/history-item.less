@@ -170,7 +170,6 @@
         }
         &-info {
             &__description {
-                max-height: 900px;
                 padding: 0;
                 margin-bottom: 10px;
             }
@@ -196,9 +195,12 @@
         }
         &-text-item, 
         &-audio-player, 
-        &__img.horizontal {
-            margin: 0 0 10px 0;
-            max-width: 100%;
+        &__img {
+            max-height: 60%;
+            &.horizontal {
+                margin: 0 0 10px 0;
+                max-width: 100%;
+            }
         }
         &-text-item {
             max-height: 310px;
