@@ -16,7 +16,7 @@ export const Header = () => {
             await logout().then(() => {
             user.setUser(undefined)
             user.setIsAuth(false)
-            localStorage.clear()
+            localStorage.removeItem("accessToken")
             history(LOGIN_ROUTE)
             })
         } catch (error) {
