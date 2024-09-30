@@ -9,8 +9,6 @@ export const AudioPlayer = ({preview, number, itemClass = undefined, }) => {
     const audioRef = useRef(null)
     const timelineRef = useRef(null)
     
-
-
     const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0)
     const [currentTime, setCurrentTime] = useState(0)
@@ -18,12 +16,14 @@ export const AudioPlayer = ({preview, number, itemClass = undefined, }) => {
     const formatTime = (time) => {
         if (time && !isNaN(time)) {
             const minutes = Math.floor(time / 60)
-            const formatMinutes =
-                minutes < 10 ? `0${minutes}` : `${minutes}`
+            const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+
             const seconds = Math.floor(time % 60);
             const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+
             setCurrentTime(`${formatMinutes}:${formatSeconds}`)
             timelineRef.current.value = audioRef.current.currentTime
+
             return `${formatMinutes}:${formatSeconds}`
         }
         return '00:00'
@@ -56,11 +56,11 @@ export const AudioPlayer = ({preview, number, itemClass = undefined, }) => {
         setCurrentTime(0)
     }
     const onDragStart = () => {
-        setIsPlaying(false)
+        if (!isPlaying) return
         audioRef.current.pause()
     }
     const onDragEnd = () => {
-        setIsPlaying(true)
+        if (!isPlaying) return 
         audioRef.current.play()
     }
     return (
@@ -79,7 +79,12 @@ export const AudioPlayer = ({preview, number, itemClass = undefined, }) => {
                 </div>
                 <div className="audio-player-change-volume">
                     <img src={volumeIcon} className="audio-player-change-volume__icon"/>
-                    <input type="range" onChange={volumeHandler} className="audio-player-change-volume__input"/>
+                    <input 
+                        type="range" 
+                        onChange={volumeHandler} 
+                        className="audio-player-change-volume__input"
+                        onMouseMove={e => e.stopPropagation()}
+                    />
                 </div>
             </div>
             <div className="audio-player-timeline">
@@ -88,12 +93,13 @@ export const AudioPlayer = ({preview, number, itemClass = undefined, }) => {
                     ref={timelineRef} 
                     defaultValue="0" 
                     type="range" 
+                    onMouseMove={e => e.stopPropagation()}
                     onMouseDownCapture={onDragStart} 
                     onTouchStart={onDragStart} 
                     onTouchEnd={onDragEnd} 
                     onClick={onDragEnd} 
-                    className="audio-player-timeline__input" 
                     onChange={timelineHandler}
+                    className="audio-player-timeline__input" 
                 />
                 <div className="audio-player-timeline__time">{duration}</div>
             </div>
