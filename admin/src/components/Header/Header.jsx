@@ -45,11 +45,9 @@ export const Header = () => {
 
             </nav>
             <div className="login-logout-link">
-                {user.isAuth &&
                 <div className="logout-btn" onClick={logoutHandler}>
                     <img src={logoutBtn}/>
                 </div>
-                }
             </div>
         </div>
     )
