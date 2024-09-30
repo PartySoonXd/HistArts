@@ -1,205 +1,193 @@
 .slider {
-    width: 100%;
-    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
     display: flex;
     position: relative;
-    padding-bottom: 70px;
-    padding-top: 10px;
-    &-item {
-        height: 80vh;
-        max-height: 1000px;
+    &::after {
+        content: "";
+        height: 100%;
+        width: 90px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: rgb(255,255,255);
+        background: linear-gradient(270deg, rgba(255,255,255,1) 10%, rgba(0,212,255,0) 100%);
+    }
+    &-container {
         display: flex;
-        flex-direction: column;
+        flex-wrap: nowrap;
         align-items: center;
-        justify-content: center;
-        position: relative;
+        overflow-x: auto;
+        padding-right: 30px;
+        user-select: none;
+        padding-bottom: 30px;
+        &::-webkit-scrollbar {
+            height: 1px;
+            background: rgba(@black, .2);
+            
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(@black, 1);
+        }
+    }
+    &-item {
+        cursor: pointer;
+        margin-left: 30px;
+        &__img {
+            max-width: 700px;
+            max-height: 650px;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+        }
+        &__name {
+            margin-top: auto;
+            .h3();
+            letter-spacing: .08em;
+            color: @black;
+            text-align: center;
+            background: @white;
+            margin-top: 15px;
+        }
         &.audio-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 500px;
         }
-        .audio-item-container {
-            height: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            border: 2px solid @black;
-            flex-direction: column;
-            align-items: center;
-        }
-        .audio-item__icon {
-            min-height: 120px;
-            width: 100%;
-            object-fit: contain;
-            margin: auto 0 20px;
-            margin-bottom: 20px;
-        }
-        &__img {
-            display: block;
-            max-height: 100%;
-        }
-        &__name {
-            .h3();
-            letter-spacing: .08em;
-            color: @black;
-            position: absolute;
-            text-align: center;
-            background: @white;
-            padding: 3px 20px;
-            left: 10px;
-            top: 10px;
-
-        }
-        &-content {
-            width: 100%;
-            position: relative;
-            overflow: auto;
-            &__text {
-                padding: 100px 50px 50px 50px;
-                font-family: "great vibes";
-                font-size: 32px;
-                letter-spacing: .09em;
-                width: 100%;
+        .audio-item {
+            &-container {
+                height: 400px;
+                width: 300px;
+                padding: 20px;
                 box-sizing: border-box;
-                position: relative;
-                overflow-y: hidden;
+                display: flex;
+                border: 2px solid @black;
+                flex-direction: column;
+                align-items: center;
+            }
+            &__icon {
+                pointer-events: none;
+                user-select: none;
+                min-height: 120px;
+                width: 100%;
+                object-fit: contain;
+                margin: auto 0 20px;
+                margin-bottom: 20px;
             }
         }
-        &-container {
-            background: url('../../assets/images/old-paper-texture.jpg');
-            white-space: pre-wrap;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: flex;
-            width: 500px;
-            height: 100%;
-            margin: auto;
-        }
-    }
-    &-arrow {
-        color: @black;
-    }
-}
-
-.swiper-horizontal > .swiper-pagination-progressbar, 
-.swiper-pagination-progressbar.swiper-pagination-horizontal {
-    top: 0px;
-    width: 100%;
-}
-.swiper-pagination-progressbar
-.swiper-pagination-progressbar-fill {
-    background: @black;
-}
-.swiper {
-    &-slide {
-        width: auto;
-    }
-    &-pagination {
-        height: 2px !important;
-        display: flex;
-        position: absolute;
-        background: lightgray;
-    }
-}
-
-.slider-item-content::-webkit-scrollbar {
-    width: 7px;
-} 
-.slider-item-content::-webkit-scrollbar-track {
-    background: transparent;
-} 
-.slider-item-content::-webkit-scrollbar-thumb {
-    background-color: @white;  
-    border-radius: 15px;       
-    box-sizing: border-box;
-    border: 1px solid @black;
-}
-
-.m-media({
-    .slider {
-        &-item {
+        .text-item {
             &-container {
-                max-width: 400px;
-                &__text {
-                    padding: 80px 25px 25px 25px;
-                    font-size: 26px;
-    
+                background: url('../../assets/images/old-paper-texture.jpg');
+                white-space: pre-wrap;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 550px;
+                height: 600px;
+                padding: 30px;
+                box-sizing: border-box;
+                overflow-y: scroll;
+                &::-webkit-scrollbar {
+                    width: 5px;
                 }
-            }
-            &.audio-item {
-                max-width: 350px;
-            }
-        }
-    }
-});
-
-.s-media({
-    .slider {
-        &-item {
-            &-container {
-                max-width: 380px;
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: @white;  
+                    border-radius: 15px;       
+                    box-sizing: border-box;
+                    border: 1px solid @black;
+                }
             }
             &-content {
+                width: 100%;
+                position: relative;
                 &__text {
-                    width: 100%;    
+                    font-family: "great vibes";
+                    font-size: 32px;
+                    letter-spacing: .09em;
+                    line-height: 48px;
+                    width: 100%;
                 }
             }
-            &.audio-item {
-                max-width: 320px;
+        }
+    }
+}
+
+.l-media({
+    .slider {
+        &::after {
+            width: 20px;
+        }
+        &-item {
+            &__img {
+                max-width: 500px;
+                max-height: 450px;
+            }
+            .text-item {
+                &-container {
+                    width: 450px;
+                    height: 450px;
+                }
+                &-content {
+                    &__text {
+                        font-size: 24px;
+                        line-height: 32px;
+                    }
+                }
             }
         }
     }
 });
-
 .xs-media({
     .slider {
+        &::after {
+            width: 0px;
+        }
+        &-container {
+            flex-direction: column;
+            padding: 0;
+        }
         &-item {
-            height: 60vh;
-            &-container {
-                max-width: 300px;
+            margin: 0 0 50px 0;
+            width: 100%;
+            &__img {
+                width: 100%;
+                max-height: 100%;
             }
-            &-content {
-                &__text {
-                    padding: 80px 25px 25px 25px;
-                    font-size: 24px;
+            &__name {
+                .h3();
+                margin: 10px 10px 0px 10px;
+                letter-spacing: .07em;
+                line-height: 45px;
+                color: @black;
+                text-align: center;
+                background: @white;
+            }
+            .audio-item {
+                &-container {
+                    width: calc(100% - 20px);
+                    padding: 10px;
                 }
             }
-            &.audio-item {
-                max-width: 280px;
+            .text-item {
+                &-container {
+                    width: calc(100% - 20px);
+                    height: 500px;
+                    padding: 15px;
+                    margin: 0 auto;
+                    box-sizing: border-box;
+                    &::-webkit-scrollbar {
+                        width: 3px;
+                    }
+                }
+                &-content {
+                    &__text {
+                        font-size: 20px;
+                        line-height: 28px;
+                    }
+                }
             }
         }
     }
 });
-
-.navigation {
-    position: absolute;
-    z-index: 3;
-    display: flex;
-    bottom: 0px;
-    right: 50%;
-    transform: translateX(50%);
-    .prev-arrow, .next-arrow {
-        width: 60px;
-        height: 60px;
-        padding: 20px;
-        background-color: @black;
-        background-image: url(../../assets/images/arrow-btn.svg);
-        background-size: 15px;
-        background-repeat: no-repeat;
-        background-position: center;
-        box-sizing: border-box;
-        border-radius: 50%;
-        margin: 0;
-        &::after, &::before {
-            font-size: 0;
-        }
-    }
-    .prev-arrow {
-        transform: rotateZ(90deg);
-        margin-right: 30px;
-    }
-    .next-arrow {
-        transform: rotateZ(-90deg);
-    }
-}
