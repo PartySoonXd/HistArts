@@ -126,13 +126,13 @@
             max-height: 80vh;
             overflow: auto;
             &::-webkit-scrollbar {
-                width: 2px;
+                width: 1px;
             } 
             &::-webkit-scrollbar-track {
-                background: lightgray;
+                background: rgba(@black, .2);
             } 
             &::-webkit-scrollbar-thumb {
-                background-color: @black;  
+                background-color: rgba(@black, 1);  
                 border-radius: 15px;       
             }
         }
@@ -141,13 +141,11 @@
 
 .figure-gallery {
     background: @white;
-    padding-top: 60px;
-    padding-bottom: 15px;
-    position: relative;
+    padding: 60px 0;
     height: auto;
     &-title {
         .h2();
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         text-align: center;
         color: @black;
     }
@@ -244,8 +242,8 @@
         &-content {
             // margin: 0 -15px;
             &__text {
-                padding: 0 15px;
-                margin-right: 15px;
+                padding: 0 5px 0 15px;
+                margin-right: 10px;
             }
             &__img {
                 padding: 0 15px
