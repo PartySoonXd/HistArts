@@ -12,8 +12,9 @@ module.exports = {
     },
     entry: "./src/index.jsx",
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: 'build/bundle.js',
+        path: path.resolve(__dirname, "build"),
+        publicPath: '/',
+        filename: 'bundle.js',
         assetModuleFilename: 'assets/[hash][ext]',
     },
     module: {
@@ -37,15 +38,17 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({}), 
         new MiniCssExtractPlugin({
-            filename: "build/styles.css",
+            filename: "./public/styles.css",
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html',
+            filename: './index.html',
+            template: 'index.html',
             favicon: "./src/assets/images/favicon.ico",
             minify: false
         }),
-        new Dotenv({path: ".env.local"}),
+        new Dotenv({
+            path: "./.env.local"
+        }),
         new webpack.ProvidePlugin({
             process: 'process/browser',
         }),
