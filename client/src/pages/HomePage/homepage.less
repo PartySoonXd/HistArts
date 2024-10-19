@@ -9,7 +9,7 @@
     
     background: #000;
     max-height: 1288px;
-    height: calc(100vh - 101px);
+    height: calc(100vh - 103px);
     
     &-title {
         .h1();
@@ -20,19 +20,20 @@
     }
 
     &-bg {
+        display: flex;
+        justify-content: center;
         z-index: 0;
         position: absolute;
         max-width: 2560px;
         width: 100%;
-        min-height: calc(100vh - 103px);
-        height: auto;
-        opacity: .6;
-        margin-top: -10px;
-        background-image: url(../../assets/images/home-bg.webp);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        overflow: hidden;
+        height: calc(100vh - 103px);
+        &__img {
+            margin-top: -10px;
+            opacity: .6;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 
@@ -202,26 +203,24 @@
 });
 .m-media({
     .intro {
-        min-height: calc(100vh - 81px);   
-        height: 100%;
+        height: calc(100vh - 81px);   
+        &-bg {
+            height: calc(100vh - 81px);   
+        }
         &-title {
             width: 75vw;
             font-size: 58px;
             margin-top: 30px;
             text-align: center;        
         }
-        &-bg {
-            min-height: calc(100vh - 81px);   
-            height: 100%;
-        }
     }
     
 });
 .s-media({
     .intro {
-        min-height: calc(100vh - 71px);   
+        height: calc(100vh - 71px);   
         &-bg {
-            min-height: calc(100vh - 71px);   
+            height: calc(100vh - 71px);   
         }
         &-title {
             width: 80vw;
@@ -256,10 +255,12 @@
 .xs-media({
     .intro {
         &-bg {
-            background-image: url(../../assets/images/home-bg-mobile.webp);
-            margin: 20px;
-            opacity: 0.8;
-            background-size: cover;
+            &__img {
+                margin: 20px;
+                opacity: .8;
+                height: 100%;
+                object-fit: cover;
+            }
         }
         &-title {
             width: 100%;

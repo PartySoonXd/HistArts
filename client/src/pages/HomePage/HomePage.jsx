@@ -6,6 +6,8 @@ import artCat from "../../assets/images/art-cat.webp"
 import musicCat from "../../assets/images/music-cat.webp"
 import poetryCat from "../../assets/images/poetry-cat.webp"
 import sculptureCat from "../../assets/images/sculpture-cat.webp"
+import homeBg from "../../assets/images/home-bg.webp"
+import homeBgMobile from "../../assets/images/home-bg-mobile.webp"
 import { Link } from "react-router-dom";
 import { ARTISTS_ROUTE, MUSICIANS_ROUTE, POETS_ROUTE, SCULPTORS_ROUTE } from "../../utils/consts";
 import { Notification } from "../../components/Notification/Notification";
@@ -75,7 +77,10 @@ export const HomePage = () => {
                     <h4 className="scroll-btn__text">Explore</h4>
                     <img src={arrowIcon} alt="scroll" className="category-scroll-btn__icon"/>
                 </div>
-                <div className="intro-bg fade-in delay-500"></div>
+                <picture className="intro-bg fade-in delay-500">
+                    <source media="(max-width: 480px)" srcSet={homeBgMobile}/>
+                    <img src={homeBg} className="intro-bg__img"/>
+                </picture>
             </section>
             <section className="categories" ref={scrolling}>
                 <motion.div 

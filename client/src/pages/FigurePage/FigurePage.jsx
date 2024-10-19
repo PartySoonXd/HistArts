@@ -12,32 +12,31 @@ import { NOT_FOUND_ROUTE } from "../../utils/consts";
 import Header from "../../components/Menu/Header";
 
 export const FigurePage = () => {
-    const [isLoading, setIsLoading] = useState(true)
     const [figure, setFigure] = useState()
     const {slug} = useParams()
     const history = useNavigate()
     const scrolling = useRef(null)
+    
     useLayoutEffect(() => {
         async function fetchData () {
             try {
                 if (figure === undefined) {
                     const {data} = await getFigureBySlug(slug)
                     setFigure(data)
-                    setIsLoading(false)
                 }
             } catch (error) {
                 if (error.response.status === 404) {
                     history(NOT_FOUND_ROUTE)
                 }
-            } finally {
-                setIsLoading(false)
-            }
+            } 
         }
         fetchData()
     }, [])
+
     const scrollToElem = () => {
         scrolling.current?.scrollIntoView({behavior: 'smooth'})
     }
+
     const variants = {
         fadeInStart: {
             opacity: 0,
@@ -83,15 +82,17 @@ export const FigurePage = () => {
             scaleX: 1
         }
     }
+
     window.onpopstate = () => {
         document.body.style.overflow = "auto"
     }
+
     return (
         <>
         <Header/>
         {figure && 
         <main className="content">
-                <section className="figure-intro" >
+            <section className="figure-intro" >
                 <div className="figure-intro-header">
                     <div className="left-line"></div>
                     <h1 className="figure-intro-title slide-up delay-500">{figure.figureInfo.firstName + " " + figure.figureInfo.secondName}</h1>
@@ -104,8 +105,10 @@ export const FigurePage = () => {
                     </div>
                     <h2 className="figure-intro-footer__text slide-up delay-1000">{figure.header.headerName}</h2>
                 </div>
-                <div className="intro-bg figure-intro-bg fade-in delay-500" style={{"backgroundImage": `url(${process.env.REACT_APP_URL + `figures/${slug}/header/` + figure.header.headerImg})`}}></div>
-                <div className="intro-bg figure-intro-bg mobile fade-in delay-500" style={{"backgroundImage": `url(${process.env.REACT_APP_URL + `figures/${slug}/header/` + figure.header.headerImg.slice(0, -4)+"-mobile.jpg"})`}}></div>
+                <picture className="intro-bg figure-intro-bg fade-in delay-500">
+                    <source media="(max-width: 800px)" srcSet={`${process.env.REACT_APP_URL + `figures/${slug}/header/` + figure.header.headerImg.slice(0, -4)+"-mobile.jpg"}`}/>
+                    <img src={`${process.env.REACT_APP_URL + `figures/${slug}/header/` + figure.header.headerImg}`} className="category-intro-bg__img"/>
+                </picture>
             </section>
             <section className="figure-about" ref={scrolling}>
                 <div className="container">

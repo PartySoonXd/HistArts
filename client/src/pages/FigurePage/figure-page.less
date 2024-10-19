@@ -5,15 +5,9 @@
     flex-direction: column;
     justify-content: space-between;
     &-bg {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
         margin: 0;
         opacity: 1;
         z-index: -1;
-        &.mobile {
-            display: none;
-        }
     }
     &-header {
         display: flex;
@@ -197,12 +191,6 @@
 
 .s-media({
     .figure-intro {
-        &-bg {
-            display: none;
-            &.mobile {
-                display: block;
-            }
-        }
         &-footer {
             flex-direction: column-reverse;
             &__text {
