@@ -40,10 +40,13 @@ services:
     build: ./server
     depends_on:
       - postgres
-    restart: on-failure
+    restart: always
+    volumes:
+      - hist-arts_static:/app/server/static
     networks:
       - net
-    command: yarn server
+    command: yarn start
+
 volumes:
-  pgadmin-data:
   data_postgres:
+  hist-arts_static:

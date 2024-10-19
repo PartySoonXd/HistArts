@@ -13,7 +13,8 @@ module.exports = {
     entry: "./src/index.jsx",
     output: {
         path: path.resolve(__dirname, "build"),
-        filename: 'public/bundle.js',
+        publicPath: '/',
+        filename: 'bundle.js',
         assetModuleFilename: 'assets/[hash][ext]',
     },
     module: {
@@ -37,11 +38,11 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({}), 
         new MiniCssExtractPlugin({
-            filename: "public/styles.css",
+            filename: "./public/styles.css",
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html',
+            filename: './index.html',
+            template: 'index.html',
             favicon: "./src/assets/images/favicon.ico",
             minify: false
         }),
