@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: flex-start; 
     margin-bottom: 20px;
+    max-height: 700px;
     &.right-side {
         padding-left: 60px;
         margin-left: auto;
@@ -29,13 +30,10 @@
         }
     }
     &-text-item {
-        background: url('../../assets/images/old-paper-texture.jpg');
-        max-width: 400px;
-        max-height: 500px;
+        background: url('../../assets/images/old-paper-texture.jpg') center;
+        max-height: 450px;
         width: 100%;
         padding: 25px;
-        margin-right: 10px;
-        padding-right: 60px;
         box-sizing: border-box;
         float: left;
         overflow-y: auto;
@@ -58,12 +56,18 @@
         }
         &-container {
             white-space: pre-wrap;
-            text-align: justify;
+            text-align: center;
             word-wrap: normal;
             color: @black;
-            font-size: 26px;
-            line-height: 30px;
+            letter-spacing: .04em;
+            font-size: 32px;
+            line-height: 48px;
             font-family: 'great vibes';
+        }
+        &.modal-text {
+            position: relative;
+            z-index: 1;
+            min-height: 70%;
         }
     }
     &__img {
@@ -95,7 +99,6 @@
             padding-right: 60px;
             box-sizing: border-box;
             width: 100%;
-            max-height: 620px;
             overflow: hidden;
             &.right-side {
                 padding: 0;
@@ -140,10 +143,6 @@
             &__description {
                 padding-right: 40px
             }
-        }
-        &-text-item {
-            padding-right: 40px;
-            max-width: 65%;
         }
     }
 });
@@ -207,11 +206,9 @@
         &-text-item {
             max-height: 310px;
             height: 100%;
-            &.modal-text {
-                position: relative;
-                z-index: 1;
-                max-height: 70%;
-                overflow: auto;
+            &-container {
+                font-size: 26px;
+                line-height: 36px;
             }
         }
         &-info {
