@@ -4,7 +4,7 @@ import {motion} from 'framer-motion'
 
 import arrowIcon from "../../assets/images/arrow-btn.svg"
 import { getFigureBySlug } from "../../http/figureAPI";
-import { ImageSlider } from "../../components/ImageSlider/ImageSlider";
+import { ImageSlider } from "../../components/GallerySlider/GallerySlider";
 import { HistoryItem } from "../../components/HistoryItem/HistoryItem";
 import {Notification} from "../../components/Notification/Notification"
 import {Footer} from "../../components/Menu/Footer"
@@ -32,7 +32,7 @@ export const FigurePage = () => {
         }
         fetchData()
     }, [])
-
+    
     const scrollToElem = () => {
         scrolling.current?.scrollIntoView({behavior: 'smooth'})
     }
@@ -139,7 +139,7 @@ export const FigurePage = () => {
                             }}
                             viewport={{once: true}}
                             />
-                        <motion.p 
+                        <motion.div 
                             className="figure-about-content__text" 
                             variants={variants}
                             initial="fadeInStart"
@@ -151,8 +151,15 @@ export const FigurePage = () => {
                             }}
                             viewport={{once: true}}
                             >    
-                            {figure.about.aboutText}
-                        </motion.p>
+                            {figure.about.aboutText.split('\n').map((item, i) => {
+                                return (
+                                    <p key={i}>
+                                        {item}
+                                        <br/>
+                                    </p>
+                                )
+                            })}
+                        </motion.div>
                     </div>
                 </div>
             </section>
