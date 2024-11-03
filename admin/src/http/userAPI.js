@@ -39,7 +39,7 @@ export const check = async () => {
         localStorage.setItem('accessToken', user.data.accessToken)
         return jwt_decode(user.data.accessToken)
     } catch (error) {
-        return error
+        throw error
     }
 }
 

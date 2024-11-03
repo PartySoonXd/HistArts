@@ -32,15 +32,14 @@ const App = observer(() => {
       }
 
     }
-    if (!localStorage.getItem("accessToken")) {
-      navigateToAuthPage()
-    }
 
-    check().then(data => {
+    check().then((data) => {
       if (data) {
         user.setUser(data)
         user.setIsAuth(true)
       }
+    }).catch(error => {
+      navigateToAuthPage()
     }).finally(() => {
       setIsLoading(false)
     })

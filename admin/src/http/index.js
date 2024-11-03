@@ -22,7 +22,7 @@ $authAdminHost.interceptors.response.use((config) => {
     if (error.response.status === 401 && error.config && !error.config._isRetry) {
         originalReq._isRetry = true
         try {
-            const response = await $adminHost.get('/api/user/auth')
+            const response = await axios.get('/api/user/auth')
             localStorage.setItem('accessToken', response.data.accessToken)
             return $authAdminHost.request(originalReq)
         } catch (error) {
