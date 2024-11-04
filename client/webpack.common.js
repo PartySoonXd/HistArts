@@ -12,7 +12,7 @@ module.exports = {
     },
     entry: "./src/index.jsx",
     output: {
-        path: path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "dist"),
         publicPath: '/',
         filename: 'bundle.js',
         assetModuleFilename: 'assets/[hash][ext]',
