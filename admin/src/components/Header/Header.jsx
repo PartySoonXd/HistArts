@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 import { CITATES_ROUTE, FIGURES_ROUTE, HOME_ROUTE, SUBSCRIBERS_ROUTE } from "../../utils/consts";
@@ -7,9 +7,11 @@ import logo from "../../assets/images/Logo.png"
 import logoutBtn from "../../assets/images/logout-btn.png"
 import { Context } from "../../context/Context";
 import { logout } from "../../http/userAPI";
+import { LOGIN_ROUTE } from "../../utils/consts";
 
 export const Header = () => {
     const {user} = useContext(Context)
+    const history = useNavigate()
 
     const logoutHandler = async () => {
         try {
@@ -20,7 +22,7 @@ export const Header = () => {
             history(LOGIN_ROUTE)
             })
         } catch (error) {
-            window.location.reload()
+            throw error
         }
     }
     return (
